@@ -5,14 +5,14 @@ const htmlparser2 = require("htmlparser2");
 
 var versionNumber = "1.1.1"
 var extraStuff = ""
-var changes = "- Fixed .forecast"
+var changes = "- Fixed .forecast \n - Deleted .aww, caused too much lag \n - Added .surprise"
 
 var quotes = ['You miss 100% of the shots you don\’t take” -Wayne Gretzky -Michael Scott', 'anyone who gets a b is dumb (it\s a joke btw)', 'whats going on', 'Doesn’t everyone have over 100 wives?', 'Is this Mongol documentary from the Mongols?', 'Can I please use my lucky charm Mr. Ferrel? I promise it\'s not a cheating device', 'Set ur point out really early and use sufficient working evidence. Then lead up with events or recordings to back up', 'Give me more quotes to put in this bot ppls', 'yo I thought I clicked circle', '"These are the things we learned" *marks one question* "good luck"', 'How does having a 100 wives show mistreatment of women', '*not okay screams during the Mongol video*', 'Audrey, you know memes have to be funny right']
 var author = ['Daniel Lee', 'Brian Lin', 'Daniel Lee', 'Richard Liu', 'Some kid in 4th period', 'Sarwesh', 'Tim Kim', 'me', 'literally everyone in kahoot', 'Mr. Ferrel', 'Ridge Huang', 'Annie Shin', 'Daniel Na']
 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
-  /*
+  ///*
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
     author: {
@@ -33,7 +33,7 @@ client.on('ready', () => {
     }
   }
 });
-*/
+//*/
 })
 
 client.on('message', (message) => {
@@ -116,9 +116,11 @@ function processCommand(message) {
   if (primaryCommand == "animeme") {
     sendAnimeme(message,fullCommand)
   }
+  /*
   if (primaryCommand == "aww") {
     sendCute(message,fullCommand)
   }
+  */
   if (primaryCommand == "version") {
     getVersion(message,fullCommand)
   }
@@ -170,7 +172,7 @@ function sendAnimeme(message, fullCommand) {
       file: imageName 
   });
 }
-
+/*
 function sendCute(message, fullCommand) {
   var random = (Math.floor(Math.random() * Math.floor(80))) + 1
   var imageName = "https://raw.githubusercontent.com/sodiumkid/old/master/images/aww/aww" + random + ".mp4"
@@ -178,7 +180,7 @@ function sendCute(message, fullCommand) {
       file: imageName 
   });
 }
-
+*/
 function giveCurse(message, fullCommand) {
   let role = message.guild.roles.find(r => r.name === "Curse of Vanishing");
   let member = message.mentions.members.first();
@@ -304,13 +306,30 @@ function giveQuote(message, fullCommand) {
 }
 
 function giveSurprise(message, fullCommand) {
-  var random = Math.floor(Math.random() * Math.floor(1))
+  var random = Math.floor(Math.random() * Math.floor(5))
   switch (random) {
     case 0:
       giveCurse(message,fullCommand)
       message.channel.send("... but only for one minute")
       setTimeout(() => {member.removeRole(message.guild.roles.find(r => r.name === "Curse of Vanishing"))}, 60 * 1000);
-  
+      break;
+    case 1:
+      message.channel.send("Here's a meme");
+      sendMeme(message, fullCommand);
+      break;
+    case 2:
+      message.channel.send("Here's an Animeme");
+      sendAnimeme(message, fullCommand);
+      break;
+    case 3:
+      message.channel.send("Here's a forecast");
+      getScore(message, fullCommand);
+      break;
+    case 4:
+      message.channel.send("You won $1! Go find Richard in school to claim it!");
+      break;
+    default:
+      break;
   }
 }
 
