@@ -124,6 +124,9 @@ function processCommand(message) {
   if (primaryCommand == "version") {
     getVersion(message,fullCommand)
   }
+  if (primaryCommand == "surprise") {
+    giveSurprise(message,fullCommand)
+  }
 }
 
 function getVersion(message, fullCommand) {
