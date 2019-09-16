@@ -157,7 +157,7 @@ function poll(message, fullCommand) {
 
 function sendMeme(message,fullCommand) {
   var random = (Math.floor(Math.random() * Math.floor(527))) + 1
-  var imageName = "images/image" + random + ".jpg"
+  var imageName = "https://raw.githubusercontent.com/sodiumkid/old/master/images/image" + random + ".jpg"
   message.channel.send({
       file: imageName 
   });
@@ -165,7 +165,7 @@ function sendMeme(message,fullCommand) {
 
 function sendAnimeme(message, fullCommand) {
   var random = (Math.floor(Math.random() * Math.floor(276))) + 1
-  var imageName = "images/animemes/meme" + random + ".jpg"
+  var imageName = "https://raw.githubusercontent.com/sodiumkid/old/master/images/animemes/meme" + random + ".jpg"
   message.channel.send({
       file: imageName 
   });
@@ -173,7 +173,7 @@ function sendAnimeme(message, fullCommand) {
 
 function sendCute(message, fullCommand) {
   var random = (Math.floor(Math.random() * Math.floor(80))) + 1
-  var imageName = "images/aww/aww" + random + ".mp4"
+  var imageName = "https://raw.githubusercontent.com/sodiumkid/old/master/images/aww/aww" + random + ".mp4"
   message.channel.send({
       file: imageName 
   });
