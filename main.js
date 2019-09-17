@@ -162,7 +162,7 @@ function poll(message, fullCommand) {
 
 function sendMeme(message,fullCommand) {
   var random = (Math.floor(Math.random() * Math.floor(527))) + 1
-  var imageName = "https://raw.githubusercontent.com/sodiumkid/old/master/images/image" + random + ".jpg"
+  var imageName = "https://www.dropbox.com/sh/m7olu1j3zz2kf6h/AABdJ9tulIMzzRY_zEVG26-ga?dl=0&preview=image" + random + ".jpg"
   message.channel.send({
       file: imageName 
   });
