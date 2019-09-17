@@ -162,7 +162,17 @@ function poll(message, fullCommand) {
 
 function sendMeme(message,fullCommand) {
   var random = (Math.floor(Math.random() * Math.floor(527))) + 1
-  var imageName = "https://raw.githubusercontent.com/sodiumkid/old/master/images/image" + random + ".jpg"
+  var number = "";
+  if (random < 10) {
+    number = "00" + i;
+  }
+  else if (random > 9 && random < 100) {
+    number = "0" + random;
+  }
+  else {
+    number = random;
+  }
+  var imageName = "https://res.cloudinary.com/drferrel/image/upload/v1568689715/memes/meme" + random + ".jpg"
   message.channel.send({
       file: imageName 
   });
