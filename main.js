@@ -319,7 +319,7 @@ function giveQuote(message, fullCommand) {
 }
 
 function giveSurprise(message, fullCommand) {
-  var random = Math.floor(Math.random() * Math.floor(5))
+  var random = Math.floor(Math.random() * Math.floor(8))
   switch (random) {
     case 0:
       message.channel.send("You won $1! Go find Richard in school to claim it!");
@@ -336,6 +336,20 @@ function giveSurprise(message, fullCommand) {
     case 3:
       message.channel.send("Here's a forecast");
       getScore(message, fullCommand);
+      break;
+    case 4:
+      message.channel.send("8Z9YWEh");
+      break;
+    case 5:
+      message.channel.send("www.discord.gg/")
+      break;
+    case 6:
+      message.channel.send("Here's an animeme");
+      sendAnimeme(message, fullCommand);
+      break;
+    case 7:
+      message.channel.send("Here's an animeme");
+      sendAnimeme(message, fullCommand);
       break;
     default:
       break;
