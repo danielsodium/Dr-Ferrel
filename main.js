@@ -322,9 +322,8 @@ function giveSurprise(message, fullCommand) {
   var random = Math.floor(Math.random() * Math.floor(5))
   switch (random) {
     case 0:
-      giveCurse(message,fullCommand)
-      message.channel.send("... but only for one minute")
-      setTimeout(() => {member.removeRole(message.guild.roles.find(r => r.name === "Curse of Vanishing"))}, 60 * 1000);
+      message.channel.send("You won $1! Go find Richard in school to claim it!");
+      break;
       break;
     case 1:
       message.channel.send("Here's a meme");
@@ -337,9 +336,6 @@ function giveSurprise(message, fullCommand) {
     case 3:
       message.channel.send("Here's a forecast");
       getScore(message, fullCommand);
-      break;
-    case 4:
-      message.channel.send("You won $1! Go find Richard in school to claim it!");
       break;
     default:
       break;
