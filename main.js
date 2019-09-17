@@ -12,7 +12,7 @@ var author = ['Daniel Lee', 'Brian Lin', 'Daniel Lee', 'Richard Liu', 'Some kid 
 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
-  ///*
+  /*
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
     author: {
@@ -33,7 +33,7 @@ client.on('ready', () => {
     }
   }
 });
-//*/
+*/
 })
 
 client.on('message', (message) => {
@@ -180,7 +180,7 @@ function sendMeme(message,fullCommand) {
 
 function sendAnimeme(message, fullCommand) {
   var random = (Math.floor(Math.random() * Math.floor(276))) + 1
-  var imageName = "https://raw.githubusercontent.com/sodiumkid/old/master/images/animemes/meme" + random + ".jpg"
+  var imageName = "https://res.cloudinary.com/drferrel/image/upload/v1568690101/animemes/meme" + random + ".jpg"
   message.channel.send({
       file: imageName 
   });
