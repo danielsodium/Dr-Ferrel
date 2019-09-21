@@ -322,7 +322,7 @@ function giveSurprise(message, fullCommand) {
   var random = Math.floor(Math.random() * Math.floor(8))
   switch (random) {
     case 0:
-      message.channel.send("You won $1! Go find Richard in school to claim it!");
+      message.channel.send("lol yeeeeet");
       break;
       break;
     case 1:
