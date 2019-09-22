@@ -12,6 +12,7 @@ var author = ['Daniel Lee', 'Brian Lin', 'Daniel Lee', 'Richard Liu', 'Some kid 
 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
+  client.channels.get("622506890936713249").send("hmm... looks like I restarted because Daniel's too lazy to pay for an actual server to host me on");
   /*
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
@@ -369,9 +370,13 @@ function getScore(message,fullCommand) {
     );
     parser.write(String(body));
     parser.end();
+    var find = "@"
     var a = th.indexOf("WK", 24980)
     var b = th.substring(a- 80, a)
-    var c = b.substring(b.indexOf("@")+2, b.indexOf("@")+26)
+    if (b.indexOf("@") == -1) {
+      find = "vs";
+    }
+    var c = b.substring(b.indexOf(find)+2, b.indexOf(find)+26)
     if (c.indexOf("W") != -1) {
       message.channel.send("Mr. Ferrel will grade easy as the 49ers won " + c.substring(c.indexOf("W")+1, c.indexOf("W")+6))
     }
