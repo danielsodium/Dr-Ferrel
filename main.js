@@ -3,7 +3,7 @@ const client = new Discord.Client();
 var request = require('request');
 const htmlparser2 = require("htmlparser2");
 
-var versionNumber = "1.1.1"
+var versionNumber = "1.1.3"
 var extraStuff = ""
 var changes = "- Fixed .forecast \n - Deleted .aww, caused too much lag \n - Added .surprise"
 
