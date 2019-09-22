@@ -1,3 +1,9 @@
+/*
+* Hello
+* Why you lookin at code
+* this is rlly messy lol sorry
+*/
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var request = require('request');
