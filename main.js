@@ -9,7 +9,11 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 var request = require('request');
 const htmlparser2 = require("htmlparser2");
+client.music = require("discord.js-musicbot-addon");
 
+client.music.start(client, {
+  youtubeKey: process.env.YOUTUBE_KEY
+});
 var versionNumber = "1.1.5"
 var extraStuff = ""
 var changes = "- Added more details to .forecast \n- Added winning picture \n- Possibly made easter egg more obvious \n- Added more quotes"
@@ -19,8 +23,8 @@ var author = ['Daniel Lee', 'Brian Lin', 'Daniel Lee', 'Richard Liu', 'Some kid 
 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
-  client.channels.get("622506890936713249").send("hmm... looks like I restarted because Daniel's too lazy to pay for an actual server to host me on");
-  ///*
+  //client.channels.get("622506890936713249").send("hmm... looks like I restarted because Daniel's too lazy to pay for an actual server to host me on");
+  /*
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
     author: {
@@ -41,7 +45,7 @@ client.on('ready', () => {
     }
   }
 });
-//*/
+*/
 })
 
 client.on('message', (message) => {
