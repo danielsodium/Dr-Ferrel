@@ -1,7 +1,8 @@
 /*
-* Hello
-* Why you lookin at code
-* this is rlly messy lol sorry
+* Dr. Ferrel
+* Version 1.1.5
+* Bot for AP World
+* Why you lookin at code lol its messy
 */
 
 const Discord = require('discord.js');
@@ -9,17 +10,17 @@ const client = new Discord.Client();
 var request = require('request');
 const htmlparser2 = require("htmlparser2");
 
-var versionNumber = "1.1.3"
+var versionNumber = "1.1.5"
 var extraStuff = ""
-var changes = "- Fixed .forecast \n - Deleted .aww, caused too much lag \n - Added .surprise"
+var changes = "- Added more details to .forecast \n- Added winning picture \n- Possibly made easter egg more obvious \n- Added more quotes"
 
-var quotes = ['You miss 100% of the shots you don\’t take” -Wayne Gretzky -Michael Scott', 'anyone who gets a b is dumb (it\s a joke btw)', 'whats going on', 'Doesn’t everyone have over 100 wives?', 'Is this Mongol documentary from the Mongols?', 'Can I please use my lucky charm Mr. Ferrel? I promise it\'s not a cheating device', 'Set ur point out really early and use sufficient working evidence. Then lead up with events or recordings to back up', 'Give me more quotes to put in this bot ppls', 'yo I thought I clicked circle', '"These are the things we learned" *marks one question* "good luck"', 'How does having a 100 wives show mistreatment of women', '*not okay screams during the Mongol video*', 'Audrey, you know memes have to be funny right']
-var author = ['Daniel Lee', 'Brian Lin', 'Daniel Lee', 'Richard Liu', 'Some kid in 4th period', 'Sarwesh', 'Tim Kim', 'me', 'literally everyone in kahoot', 'Mr. Ferrel', 'Ridge Huang', 'Annie Shin', 'Daniel Na']
+var quotes = ['You miss 100% of the shots you don\’t take” -Wayne Gretzky -Michael Scott', 'anyone who gets a b is dumb (it\s a joke btw)', 'whats going on', 'Doesn’t everyone have over 100 wives?', 'Is this Mongol documentary from the Mongols?', 'Can I please use my lucky charm Mr. Ferrel? I promise it\'s not a cheating device', 'Set ur point out really early and use sufficient working evidence. Then lead up with events or recordings to back up', 'Give me more quotes to put in this bot ppls', 'yo I thought I clicked circle', '"These are the things we learned" *marks one question* "good luck"', 'How does having a 100 wives show mistreatment of women', '*not okay screams during the Mongol video*', 'Audrey, you know memes have to be funny right', 'I like categorize people based on what their shoes are', 'But I have Jordans and I\'m not a cool kid']
+var author = ['Daniel Lee', 'Brian Lin', 'Daniel Lee', 'Richard Liu', 'Some kid in 4th period', 'Sarwesh', 'Tim Kim', 'me', 'literally everyone in kahoot', 'Mr. Ferrel', 'Ridge Huang', 'Annie Shin', 'Daniel Na', 'Sean Tang', 'Sarwesh']
 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
   client.channels.get("622506890936713249").send("hmm... looks like I restarted because Daniel's too lazy to pay for an actual server to host me on");
-  /*
+  ///*
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
     author: {
@@ -40,7 +41,7 @@ client.on('ready', () => {
     }
   }
 });
-*/
+//*/
 })
 
 client.on('message', (message) => {
@@ -48,14 +49,14 @@ client.on('message', (message) => {
       return
   }
   else if (message.member.roles.some(role => role.name == 'Curse of Vanishing')) {
-    message.delete(250)
+    message.delete(1000)
   }
   else if (message.content.startsWith(".")) {
     processCommand(message);
   }
-  else if (message.content.includes(" 100") || message.content.includes(" 105")) {
+  else if (!(message.content.includes("@")) && (message.content.includes("100") || message.content.includes("105"))) {
     message.channel.send({
-      file: "images/misc/royale.png" 
+      file: "https://res.cloudinary.com/drferrel/image/upload/v1568690101/misc/winner.png" 
     });
   }
   else if (message.content.includes("offended") || message.content.includes("offensive")  ) {
@@ -133,6 +134,9 @@ function processCommand(message) {
   }
   if (primaryCommand == "surprise") {
     giveSurprise(message,fullCommand)
+  }
+  if (primaryCommand == "8Z9YWEh") {
+    message.channel.send("www.discord.gg/");
   }
 }
 
@@ -263,8 +267,8 @@ function getHelp(message, fullCommand) {
         value: "Random history meme"
       },
       {
-        name: ".aww",
-        value: "Random Cute Video"
+        name: "8Z9YWEh",
+        value: "huh idk what that means"
       },
       {
         name: ".animeme",
@@ -329,7 +333,7 @@ function giveSurprise(message, fullCommand) {
   var random = Math.floor(Math.random() * Math.floor(8))
   switch (random) {
     case 0:
-      message.channel.send("lol yeeeeet");
+      message.channel.send("no.");
       break;
       break;
     case 1:
@@ -384,10 +388,10 @@ function getScore(message,fullCommand) {
     }
     var c = b.substring(b.indexOf(find)+2, b.indexOf(find)+26)
     if (c.indexOf("W") != -1) {
-      message.channel.send("Mr. Ferrel will grade easy as the 49ers won " + c.substring(c.indexOf("W")+1, c.indexOf("W")+6))
+      message.channel.send("Mr. Ferrel will grade easy as the 49ers won " + c.substring(c.indexOf("W")+1, c.indexOf("W")+6) + " " + find + " " +b.substring(b.indexOf(find)+ 3, b.indexOf("W")-1) + " (" + b.substring(b.indexOf("W")+ 8, b.indexOf("W")+11) + ")");
     }
     else {
-      message.channel.send("Mr. Ferrel will grade hard as the 49ers lost " + c.substring(c.indexOf("L", 3)+1, c.indexOf("L", 3)+6))
+      message.channel.send("Mr. Ferrel will grade hard as the 49ers lost " + c.substring(c.indexOf("L", 3)+1, c.indexOf("L", 3)+6)+ " " + find + " " +b.substring(b.indexOf(find)+ 3, b.indexOf("L")-1) + " (" + b.substring(b.indexOf("L")+ 8, b.indexOf("L")+11) + ")");
     }
   });
 }
