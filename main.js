@@ -14,6 +14,9 @@ client.music = require("discord.js-musicbot-addon");
 client.music.start(client, {
   youtubeKey: process.env.YOUTUBE_KEY,
   botPrefix: '.'
+  help: {
+    enabled: false
+  }
 });
 
 var versionNumber = "1.1.5"
