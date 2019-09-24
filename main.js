@@ -376,6 +376,10 @@ function getHelp(message, fullCommand) {
         value: "Become Admin"
       },
       {
+        name: ".role [role name]",
+        value: "Gives/takes role (only one is gamer)"
+      },
+      {
         name: ".8Z9YWEh",
         value: "8Z9YWEh8Z9YWEh"
       },
