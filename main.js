@@ -144,9 +144,6 @@ function processCommand(message) {
   if (primaryCommand == "8Z9YWEh") {
     message.channel.send("www.discord.gg/");
   }
-  if (primaryCommand == "play") {
-    client.music.bot.playFunction(message, suffix);
-  }
 }
 
 function getVersion(message, fullCommand) {
