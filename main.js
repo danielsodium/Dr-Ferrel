@@ -1,6 +1,6 @@
 /*
 * Dr. Ferrel
-* Version 1.2.1
+* Version 1.2.3
 * Created by sodiumkid
 * Bot for AP World
 * Why you lookin at code lol its messy
@@ -22,7 +22,7 @@ client.music.start(client, {
   botAdmins: ['431625294550532097','390010548567277571','491388903325040651','182625290692984832']
 });
 
-var versionNumber = "1.2.1"
+var versionNumber = "1.2.3"
 var extraStuff = " music update"
 var changes = "- Added music to the bot (gets music from Youtube) \n- Updated help with music page \n- Added more quotes"
 
@@ -31,7 +31,7 @@ var author = ['Daniel Lee', 'Brian Lin', 'Daniel Lee', 'Richard Liu', 'Some kid 
 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
-  //client.channels.get("622506890936713249").send("hmm... looks like I restarted because Daniel's too lazy to pay for an actual server to host me on");
+  client.channels.get("626186938080034844").send("Started");
   /*
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
@@ -151,6 +151,9 @@ function processCommand(message) {
   if (primaryCommand == "8Z9YWEh") {
     message.channel.send("www.discord.gg/");
   }
+  if (primaryCommand == "role") {
+    giveRole(message,splitCommand)
+  }
 }
 
 function getVersion(message, fullCommand) {
@@ -218,6 +221,17 @@ function sendCute(message, fullCommand) {
   });
 }
 */
+
+function giveRole(message, splitCommand) {
+  if (splitCommand[1] == "gamer" || splitCommand[1] == "Gamer" || splitCommand[1] == "gamers") {
+    var role = message.guild.roles.find(r => r.name === "gamer");
+  }
+  
+  let member = message.author.id;
+  message.channel.send("Gave " + member.toString() + "the role " + role)
+  member.addRole(role).catch(console.error);
+}
+
 function giveCurse(message, fullCommand) {
   let role = message.guild.roles.find(r => r.name === "Curse of Vanishing");
   let member = message.mentions.members.first();
