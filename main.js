@@ -1,6 +1,6 @@
 /*
 * Dr. Ferrel
-* Version 1.2.0
+* Version 1.2.1
 * Created by sodiumkid
 * Bot for AP World
 * Why you lookin at code lol its messy
@@ -22,7 +22,7 @@ client.music.start(client, {
   botAdmins: ['431625294550532097','390010548567277571','491388903325040651','182625290692984832']
 });
 
-var versionNumber = "1.2.0"
+var versionNumber = "1.2.1"
 var extraStuff = " music update"
 var changes = "- Added music to the bot (gets music from Youtube) \n- Updated help with music page \n- Added more quotes"
 
@@ -32,7 +32,7 @@ var author = ['Daniel Lee', 'Brian Lin', 'Daniel Lee', 'Richard Liu', 'Some kid 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
   //client.channels.get("622506890936713249").send("hmm... looks like I restarted because Daniel's too lazy to pay for an actual server to host me on");
-  ///*
+  /*
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
     author: {
@@ -53,7 +53,7 @@ client.on('ready', () => {
     }
   }
 });
-//*/
+*/
 })
 
 client.on('message', (message) => {
