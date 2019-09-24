@@ -227,7 +227,7 @@ function giveRole(message, splitCommand) {
     var role = message.guild.roles.find(r => r.name === "gamer");
   }
   
-  let member = message.author.id;
+  let member = message.member;
   message.channel.send("Gave " + member.toString() + "the role " + role)
   member.addRole(role).catch(console.error);
 }
