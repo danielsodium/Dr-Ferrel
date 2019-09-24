@@ -10,7 +10,6 @@ const client = new Discord.Client();
 var request = require('request');
 const htmlparser2 = require("htmlparser2");
 client.music = require("discord.js-musicbot-addon");
-var ffmpeg = require('ffmpeg');
 
 client.music.start(client, {
   youtubeKey: process.env.YOUTUBE_KEY,
