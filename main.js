@@ -23,7 +23,7 @@ client.music.start(client, {
 });
 
 var versionNumber = "1.2.0"
-var extraStuff = " la musica"
+var extraStuff = " music update"
 var changes = "- Added music to the bot (gets music from Youtube) \n- Updated help with music page \n- Added more quotes"
 
 var quotes = ['You miss 100% of the shots you don\’t take” -Wayne Gretzky -Michael Scott', 'anyone who gets a b is dumb (it\s a joke btw)', 'whats going on', 'Doesn’t everyone have over 100 wives?', 'Is this Mongol documentary from the Mongols?', 'Can I please use my lucky charm Mr. Ferrel? I promise it\'s not a cheating device', 'Set ur point out really early and use sufficient working evidence. Then lead up with events or recordings to back up', 'Give me more quotes to put in this bot ppls', 'yo I thought I clicked circle', '"These are the things we learned" *marks one question* "good luck"', 'How does having a 100 wives show mistreatment of women', '*not okay screams during the Mongol video*', 'Audrey, you know memes have to be funny right', 'I like categorize people based on what their shoes are', 'But I have Jordans and I\'m not a cool kid']
