@@ -12,7 +12,8 @@ const htmlparser2 = require("htmlparser2");
 client.music = require("discord.js-musicbot-addon");
 
 client.music.start(client, {
-  youtubeKey: process.env.YOUTUBE_KEY
+  youtubeKey: process.env.YOUTUBE_KEY,
+  botPrefix: "."
 });
 var versionNumber = "1.1.5"
 var extraStuff = ""
@@ -80,6 +81,7 @@ function processCommand(message) {
   let splitCommand = fullCommand.split(" ")
   let primaryCommand = splitCommand[0]
   let arguments = splitCommand.slice(1)
+  const suffix = message.substring(musicbot.botPrefix.length + command.length).trim();
   if (primaryCommand == "poll") {
     poll(message, fullCommand)
   }
@@ -141,6 +143,9 @@ function processCommand(message) {
   }
   if (primaryCommand == "8Z9YWEh") {
     message.channel.send("www.discord.gg/");
+  }
+  if (primaryCommand == "play") {
+    client.music.bot.playFunction(message, suffix);
   }
 }
 
