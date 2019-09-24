@@ -1,6 +1,7 @@
 /*
 * Dr. Ferrel
-* Version 1.1.5
+* Version 1.2.0
+* Created by sodiumkid
 * Bot for AP World
 * Why you lookin at code lol its messy
 */
@@ -13,17 +14,17 @@ client.music = require("discord.js-musicbot-addon");
 
 client.music.start(client, {
   youtubeKey: process.env.YOUTUBE_KEY,
-  botPrefix: '.'
-  /*
+  botPrefix: '.',
   'help': {
     enabled: false
-  }
-  */
+  },
+  ownerID: '431625294550532097',
+  botAdmins: ['431625294550532097','390010548567277571','491388903325040651','182625290692984832']
 });
 
-var versionNumber = "1.1.5"
-var extraStuff = ""
-var changes = "- Added more details to .forecast \n- Added winning picture \n- Possibly made easter egg more obvious \n- Added more quotes"
+var versionNumber = "1.2.0"
+var extraStuff = " la musica"
+var changes = "- Added music to the bot (gets music from Youtube) \n- Updated help with music page \n- Added more quotes"
 
 var quotes = ['You miss 100% of the shots you don\’t take” -Wayne Gretzky -Michael Scott', 'anyone who gets a b is dumb (it\s a joke btw)', 'whats going on', 'Doesn’t everyone have over 100 wives?', 'Is this Mongol documentary from the Mongols?', 'Can I please use my lucky charm Mr. Ferrel? I promise it\'s not a cheating device', 'Set ur point out really early and use sufficient working evidence. Then lead up with events or recordings to back up', 'Give me more quotes to put in this bot ppls', 'yo I thought I clicked circle', '"These are the things we learned" *marks one question* "good luck"', 'How does having a 100 wives show mistreatment of women', '*not okay screams during the Mongol video*', 'Audrey, you know memes have to be funny right', 'I like categorize people based on what their shoes are', 'But I have Jordans and I\'m not a cool kid']
 var author = ['Daniel Lee', 'Brian Lin', 'Daniel Lee', 'Richard Liu', 'Some kid in 4th period', 'Sarwesh', 'Tim Kim', 'me', 'literally everyone in kahoot', 'Mr. Ferrel', 'Ridge Huang', 'Annie Shin', 'Daniel Na', 'Sean Tang', 'Sarwesh']
@@ -31,7 +32,7 @@ var author = ['Daniel Lee', 'Brian Lin', 'Daniel Lee', 'Richard Liu', 'Some kid 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
   //client.channels.get("622506890936713249").send("hmm... looks like I restarted because Daniel's too lazy to pay for an actual server to host me on");
-  /*
+  ///*
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
     author: {
@@ -52,7 +53,7 @@ client.on('ready', () => {
     }
   }
 });
-*/
+//*/
 })
 
 client.on('message', (message) => {
@@ -294,6 +295,56 @@ function getHelp(message, fullCommand) {
     message.channel.send({embed: {
     color: 1237308,
     author: {},
+    title: 'Dr. Ferrel Commands | Music',
+    description: 'Gets music from Youtube API. Must be in a voice channel to use.',
+    fields: [{
+        name: ".play",
+        value: "Queue a song/playlist by URL or name"
+      },
+      {
+        name: ".remove",
+        value: "Remove a song from the queue by position in the queue"
+      },
+      {
+        name: ".skip",
+        value: "Skip a song or songs with skip [number]"
+      },
+      {
+        name: ".leave",
+        value: "Leaves the voice channel"
+      },
+      {
+        name: ".search",
+        value: "Searchs for up to 10 videos from YouTube"
+      },
+      {
+        name: ".pause",
+        value: "Pauses playing music"
+      },
+      {
+        name: ".volume",
+        value: "Changes the volume output of the bot."
+      },
+      {
+        name: ".queue",
+        value: "View the current queue."
+      },
+      {
+        name: ".np",
+        value: "Shows the now playing text."
+      },
+      {
+        name: ".clear",
+        value: "Clears the entire queue."
+      }
+    ],
+    }
+    });
+  }
+  else if (fullCommand.includes("4")) {
+    message.channel.send({embed: {
+    color: 1237308,
+    author: {},
     title: 'Dr. Ferrel Commands | Misc.',
     fields: [{
         name: ".about",
@@ -302,6 +353,10 @@ function getHelp(message, fullCommand) {
       {
         name: ".admin",
         value: "Become Admin"
+      },
+      {
+        name: ".8Z9YWEh",
+        value: "8Z9YWEh8Z9YWEh"
       },
       {
         name: ".version",
@@ -326,7 +381,11 @@ function getHelp(message, fullCommand) {
         value: "Memes, Quotes, Forecast, etc."
       },
       {
-        name: ".help 3 | Other",
+        name: ".help 3 | Music",
+        value: "Use Music Commands"
+      },
+      {
+        name: ".help 4 | Other",
         value: "Misc. Commands"
       },
     ],
