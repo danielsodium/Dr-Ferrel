@@ -13,6 +13,7 @@
     "discord.js-musicbot-addon": "^13.8.1",
     "request": "2.88.0",
     "htmlparser2": "^4.0.0",
+    "ffmpeg": "0.0.4",
     "ffmpeg-binaries": "^4.0.0",
     "googleapis": "^39.2.0",
     "mysql": "^2.17.1",
