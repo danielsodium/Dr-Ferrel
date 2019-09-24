@@ -228,8 +228,15 @@ function giveRole(message, splitCommand) {
   }
   
   let member = message.member;
-  message.channel.send("Gave " + member.toString() + "the role " + role)
-  member.addRole(role).catch(console.error);
+  if (message.member.roles.has(role.id)) {
+    message.channel.send("Took away the role " + role.name)
+    member.removeRole(role).catch(console.error);
+  } 
+  else {
+    message.channel.send("Gave you the role " + role.name)
+    member.addRole(role).catch(console.error);
+  }
+  
 }
 
 function giveCurse(message, fullCommand) {
