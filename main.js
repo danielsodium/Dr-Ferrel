@@ -12,9 +12,9 @@ const htmlparser2 = require("htmlparser2");
 client.music = require("discord.js-musicbot-addon");
 
 client.music.start(client, {
-  youtubeKey: process.env.YOUTUBE_KEY,
-  botPrefix: "."
+  youtubeKey: process.env.YOUTUBE_KEY
 });
+
 var versionNumber = "1.1.5"
 var extraStuff = ""
 var changes = "- Added more details to .forecast \n- Added winning picture \n- Possibly made easter egg more obvious \n- Added more quotes"
@@ -81,7 +81,7 @@ function processCommand(message) {
   let splitCommand = fullCommand.split(" ")
   let primaryCommand = splitCommand[0]
   let arguments = splitCommand.slice(1)
-  const suffix = message.substring(musicbot.botPrefix.length + command.length).trim();
+
   if (primaryCommand == "poll") {
     poll(message, fullCommand)
   }
