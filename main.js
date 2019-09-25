@@ -63,6 +63,9 @@ client.on('ready', () => {
 });
 */
 })
+client.on("guildMemberAdd", (member) => {
+  client.channels.get("626186938080034844").send("Hey " + memeber.toString() + ", welcome... we just do random stuff idk");
+});
 
 client.on('message', (message) => {
   if (message.author == client.user || message.author.bot) {
