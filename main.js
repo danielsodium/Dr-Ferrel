@@ -87,15 +87,16 @@ client.on('message', (message) => {
   
   
   else {
-    levelCount--;
+    levelCount -= 1;
     if (levelCount == 0) {
       levelCount = Math.floor(Math.random() * 80) + 10;
       con.connect();
+      
       client.channels.get("626186938080034844").send("Connected!");
       con.query("SELECT * FROM currency WHERE username = " + message.member.id, function (err, result) {
         if (!err) {
           client.channels.get("626186938080034844").send(result);
-        };
+        }
         else {
           var sql = "INSERT INTO currency (username, dollars) VALUES (" + message.member.id + ", 0)";
           con.query(sql, function (err, result) {
@@ -105,9 +106,7 @@ client.on('message', (message) => {
         }
       });
     
-    
     con.end();
-      
       
     }
     
