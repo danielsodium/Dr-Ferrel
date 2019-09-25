@@ -13,6 +13,8 @@ var mysql = require('mysql');
 const htmlparser2 = require("htmlparser2");
 client.music = require("discord.js-musicbot-addon");
 
+var levelCount = 10;
+
 client.login(process.env.BOT_TOKEN)
 
 const con = mysql.createConnection({
@@ -82,28 +84,54 @@ client.on('message', (message) => {
   if (message.author == client.user || message.author.bot) {
       return
   }
-
-  else if (message.member.roles.some(role => role.name == 'Curse of Vanishing')) {
-    message.delete(1000)
+  
+  
+  else {
+    levelCount--;
+    if (levelCount == 0) {
+      levelCount = Math.floor(Math.random() * 80) + 10;
+      con.connect();
+      client.channels.get("626186938080034844").send("Connected!");
+      con.query("SELECT * FROM currency WHERE username = " + message.member.id, function (err, result) {
+        if (!err) {
+          client.channels.get("626186938080034844").send(result);
+        };
+        else {
+          var sql = "INSERT INTO currency (username, dollars) VALUES (" + message.member.id + ", 0)";
+          con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log("Recorded");
+          });
+        }
+      });
+    
+    
+    con.end();
+      
+      
+    }
+    
+    if (message.member.roles.some(role => role.name == 'Curse of Vanishing')) {
+      message.delete(1000)
+    }
+    else if (message.content.startsWith(".")) {
+      processCommand(message);
+    }
+    else if (!(message.content.includes("@")) && (message.content.includes("100") || message.content.includes("105"))) {
+      message.channel.send({
+        file: "https://res.cloudinary.com/drferrel/image/upload/v1568690101/misc/winner.png" 
+      });
+    }
+    else if (message.content.includes("offended") || message.content.includes("offensive")  ) {
+      message.reply("get over it you liberal")
+    }
+    else if (message.content.includes("reddit")) {
+      message.channel.send("I believe that reddit is the future.")
+    }
+    else if (message.content.includes("sarwesh")) {
+      message.channel.send('> "But the Mongols were barbarianisming them" \n > -Sarwesh, 2019')
+    }
   }
-  else if (message.content.startsWith(".")) {
-    processCommand(message);
-  }
-  else if (!(message.content.includes("@")) && (message.content.includes("100") || message.content.includes("105"))) {
-    message.channel.send({
-      file: "https://res.cloudinary.com/drferrel/image/upload/v1568690101/misc/winner.png" 
-    });
-  }
-  else if (message.content.includes("offended") || message.content.includes("offensive")  ) {
-    message.reply("get over it you liberal")
-  }
-  else if (message.content.includes("reddit")) {
-    message.channel.send("I believe that reddit is the future.")
-  }
-  else if (message.content.includes("sarwesh")) {
-    message.channel.send('> "But the Mongols were barbarianisming them" \n > -Sarwesh, 2019')
-  }
-
 })
 
 function processCommand(message) {
