@@ -15,6 +15,13 @@ client.music = require("discord.js-musicbot-addon");
 
 client.login(process.env.BOT_TOKEN)
 
+var con = mysql.createConnection({
+  host: process.env.SERVER,
+  user: process.env.NAME,
+  password: process.env.PASSWORD
+});
+
+
 client.music.start(client, {
   youtubeKey: process.env.YOUTUBE_KEY,
   botPrefix: '.',
