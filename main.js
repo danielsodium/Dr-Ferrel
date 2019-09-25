@@ -15,7 +15,13 @@ client.music = require("discord.js-musicbot-addon");
 
 client.login(process.env.BOT_TOKEN)
 
-
+const con = mysql.createConnection({
+  host: process.env.SERVER,
+  user: process.env.DATABASE_NAME,
+  port: '3306',
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME
+});
 
 client.music.start(client, {
   youtubeKey: process.env.YOUTUBE_KEY,
@@ -172,13 +178,7 @@ function processCommand(message) {
     giveRole(message,splitCommand)
   }
   if (primaryCommand == "connect") {
-    const con = mysql.createConnection({
-      host: process.env.SERVER,
-      user: process.env.DATABASE_NAME,
-      port: '3306',
-      password: process.env.DATABASE_PASSWORD,
-      database: process.env.DATABASE_NAME
-    });
+
 
     con.connect();
     client.channels.get("626186938080034844").send("Connected!");
@@ -189,6 +189,7 @@ function processCommand(message) {
       client.channels.get("626186938080034844").send("Table created");
     });
     */
+    
     con.end();
   }
 }
