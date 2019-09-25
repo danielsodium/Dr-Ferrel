@@ -164,7 +164,7 @@ function processCommand(message) {
     giveRole(message,splitCommand)
   }
   if (primaryCommand == "connect") {
-    var con = mysql.createConnection({
+    const con = mysql.createConnection({
       host: process.env.SERVER,
       user: process.env.DATABASE_NAME,
       port: '3306',
@@ -172,11 +172,8 @@ function processCommand(message) {
       database: process.env.DATABASE_NAME
     });
 
-    con.connect(function(err) {
-      if (err) throw err;
-      client.channels.get("626186938080034844").send("Connected!");
-      break;
-    });
+    con.connect();
+    client.channels.get("626186938080034844").send("Connected!");
   }
 }
 
