@@ -174,6 +174,7 @@ function processCommand(message) {
 
     con.connect();
     client.channels.get("626186938080034844").send("Connected!");
+    con.end();
   }
 }
 
