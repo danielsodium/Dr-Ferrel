@@ -22,6 +22,7 @@ var con = mysql.createConnection({
 });
 
 
+
 client.music.start(client, {
   youtubeKey: process.env.YOUTUBE_KEY,
   botPrefix: '.',
@@ -43,7 +44,10 @@ var author = ['Daniel Lee', 'Brian Lin', 'Daniel Lee', 'Richard Liu', 'Some kid 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
   client.channels.get("626186938080034844").send("Started");
-
+  con.connect(function(err) {
+    if (err) throw err;
+    client.channels.get("626186938080034844").send("Connected!");
+  });
   /*
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
