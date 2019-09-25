@@ -17,8 +17,8 @@ client.login(process.env.BOT_TOKEN)
 
 var con = mysql.createConnection({
   host: process.env.SERVER,
-  user: process.env.NAME,
-  password: process.env.PASSWORD
+  user: process.env.DATABASE_NAME,
+  password: process.env.DATABASE_PASSWORD
 });
 
 con.connect(function(err) {
