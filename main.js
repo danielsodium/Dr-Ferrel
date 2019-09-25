@@ -21,10 +21,6 @@ var con = mysql.createConnection({
   password: process.env.DATABASE_PASSWORD
 });
 
-con.connect(function(err) {
-  if (err) throw err;
-  break;
-});
 
 client.music.start(client, {
   youtubeKey: process.env.YOUTUBE_KEY,
@@ -48,6 +44,10 @@ client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
   client.channels.get("626186938080034844").send("Started");
 
+  con.connect(function(err) {
+    if (err) throw err;
+    client.channels.get("626186938080034844").send("Connected!");
+  });
   /*
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
