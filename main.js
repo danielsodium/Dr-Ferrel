@@ -57,9 +57,10 @@ client.on('ready', () => {
 })
 
 client.on('message', (message) => {
-  if (message.author == client.user) {
+  if (message.author == client.user || message.author.bot) {
       return
   }
+  
   else if (message.member.roles.some(role => role.name == 'Curse of Vanishing')) {
     message.delete(1000)
   }
