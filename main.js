@@ -68,6 +68,10 @@ client.on("guildMemberAdd", (member) => {
   client.channels.get("619388377577422848").send("Hey " + member.toString() + ", welcome... we just do random stuff ap world idk");
 });
 
+client.on("guildMemberRemove", (member) => {
+  client.channels.get("619388377577422848").send("oh " + member.toString() + " left... well its better off without them....");
+});
+
 client.on('message', (message) => {
   if (message.author == client.user || message.author.bot) {
       return
