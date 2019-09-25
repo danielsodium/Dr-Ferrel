@@ -65,7 +65,7 @@ client.on('ready', () => {
 })
 
 client.on("guildMemberAdd", (member) => {
-  client.channels.get("626186938080034844").send("Hey " + memeber.toString() + ", welcome... we just do random stuff ap world idk");
+  client.channels.get("619388377577422848").send("Hey " + member.toString() + ", welcome... we just do random stuff ap world idk");
 });
 
 client.on('message', (message) => {
