@@ -167,7 +167,8 @@ function processCommand(message) {
     var con = mysql.createConnection({
       host: process.env.SERVER,
       user: process.env.DATABASE_NAME,
-      password: process.env.DATABASE_PASSWORD
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME
     });
 
     con.connect(function(err) {
