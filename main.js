@@ -167,7 +167,7 @@ function processCommand(message) {
     var con = mysql.createConnection({
       host: process.env.SERVER,
       user: process.env.DATABASE_NAME,
-      port: 3306,
+      port: '3306',
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME
     });
