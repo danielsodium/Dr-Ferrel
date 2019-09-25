@@ -14,9 +14,9 @@ const htmlparser2 = require("htmlparser2");
 client.music = require("discord.js-musicbot-addon");
 
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "yourusername",
-  password: "yourpassword"
+  host: process.env.SERVER,
+  user: process.env.DATABASE_NAME,
+  password: process.env.PASSWORD
 });
 
 client.music.start(client, {
