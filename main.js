@@ -94,7 +94,8 @@ client.on('message', (message) => {
       con.connect();
       
       client.channels.get("626186938080034844").send("Connected!");
-      con.query("SELECT * FROM currency WHERE username = " + message.member.id, function (err, result) {
+      var check = "SELECT * FROM currency WHERE username = " + message.member.id
+      con.query(check, function (err, result) {
         if (!err) {
           client.channels.get("626186938080034844").send(result);
         }
@@ -107,6 +108,7 @@ client.on('message', (message) => {
           });
           */
           client.channels.get("626186938080034844").send("nope");
+          return;
         }
       });
     
