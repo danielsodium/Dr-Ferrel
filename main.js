@@ -277,20 +277,21 @@ function poll(message, fullCommand) {
   message.delete()
 }
 function seeCon(message, callback) {
+  var isTrue = "";
   pool.getConnection(function(err, connection) {
     var sql = "SELECT EXISTS( SELECT * FROM currency WHERE username = " + message.member.id + ")";
     connection.query(sql, function (err, result, fields) {
       if (err) throw err
-      message.channel.send('> "' + result[random].author + '"\n' + '> ' + result[random].quote);
+      isTrue = JSON.stringify(result);
       //message.channel.send("> -"+result[random].person)
     });
     connection.release();
   });
-  callback(message, result)
+  callback(message, isTrue)
 }
 
 function addLevel(message, result) {
-  var isTrue = JSON.stringify(result);
+  
   client.channels.get("626186938080034844").send('works');
   if (isTrue.substring(isTrue.length-3, isTrue.length-2) == '0') {
     var sql = "INSERT INTO currency (username, dollars) VALUES (" + message.member.id + ", 0)";
