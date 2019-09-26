@@ -233,8 +233,7 @@ function processCommand(message) {
   if (primaryCommand == "connect") {
 
 
-    con.connect();
-    client.channels.get("626186938080034844").send("Connected!");
+    seeCon(message,addLevel);
     /*
     var sql = "CREATE TABLE currency (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), dollars SMALLINT(255))";
     con.query(sql, function (err, result) {
@@ -243,7 +242,7 @@ function processCommand(message) {
     });
     */
     
-    con.end();
+    
   }
 }
 
