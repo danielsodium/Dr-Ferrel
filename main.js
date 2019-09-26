@@ -110,7 +110,7 @@ client.on('message', (message) => {
           });
           */
           client.channels.get("626186938080034844").send('works');
-          client.channels.get("626186938080034844").send(result[Object.keys(result)[0]);
+          client.channels.get("626186938080034844").send(JSON.stringify(result));
           client.channels.get("626186938080034844").send('works');
           return;
         }
