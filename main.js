@@ -94,10 +94,12 @@ client.on('message', (message) => {
       con.connect();
       
       client.channels.get("626186938080034844").send("Connected!");
-      var check = "SELECT * FROM currency WHERE username = " + message.member.id
+      var check = "SELECT EXISTS( SELECT * FROM currency WHERE username = " + message.member.id + ")";
       con.query(check, function (err, result) {
-        if (!err) {
-          client.channels.get("626186938080034844").send(result);
+        if (err) {
+          client.channels.get("626186938080034844").send("nope");
+          return;
+
         }
         else {
           /*
@@ -107,7 +109,9 @@ client.on('message', (message) => {
             console.log("Recorded");
           });
           */
-          client.channels.get("626186938080034844").send("nope");
+          client.channels.get("626186938080034844").send('works');
+          client.channels.get("626186938080034844").send(result);
+          client.channels.get("626186938080034844").send('works');
           return;
         }
       });
