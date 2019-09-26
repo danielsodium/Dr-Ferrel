@@ -514,9 +514,9 @@ function giveQuote(message, fullCommand) {
     connection.query("SELECT quote, author FROM quotes", function (err, result, fields) {
       if (err) throw err
       message.channel.send('> "' + result[random].author + '"\n' + '> ' + result[random].quote);
-      connection.release();
       //message.channel.send("> -"+result[random].person)
     });
+    connection.release();
   });
 }
 
