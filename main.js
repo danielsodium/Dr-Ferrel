@@ -84,6 +84,7 @@ client.on('message', (message) => {
   if (message.author == client.user || message.author.bot) {
       return
   }
+  /*
   else {
     levelCount -= 1;
   }
@@ -107,7 +108,7 @@ client.on('message', (message) => {
           if (err) throw err;
           console.log("Recorded");
         });
-        */
+        
         var isTrue = JSON.stringify(result);
         client.channels.get("626186938080034844").send('works');
         if (isTrue.substring(isTrue.length-3, isTrue.length-2) == '0') {
@@ -126,7 +127,7 @@ client.on('message', (message) => {
     });
     con.end();
   }
-
+  */
   else if (message.member.roles.some(role => role.name == 'Curse of Vanishing')) {
     message.delete(1000)
   }
