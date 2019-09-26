@@ -230,6 +230,9 @@ function processCommand(message) {
   if (primaryCommand == "role") {
     giveRole(message,splitCommand)
   }
+  if (primaryCommand == "shutup") {
+    soundEffect();
+  }
   if (primaryCommand == "connect") {
 
 
@@ -267,6 +270,15 @@ function getVersion(message, fullCommand) {
     }
   }
  });
+}
+
+function soundEffect() {
+  var voiceChannel = message.member.voiceChannel;
+  voiceChannel.join().then(connection =>{}).catch(err => console.log(err));
+  const dispatcher = connection.playFile('https://res.cloudinary.com/drferrel/video/upload/v1569529168/misc/shutup');
+  dispatcher.on("end", end => {});
+  voiceChannel.leave();
+
 }
 
 function poll(message, fullCommand) {
