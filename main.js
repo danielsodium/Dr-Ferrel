@@ -80,6 +80,20 @@ client.on('message', (message) => {
       return
   }
   /*
+  
+  
+  pool.getConnection(function(err, connection) {
+    connection.query("SELECT quote, author FROM quotes", function (err, result, fields) {
+      if (err) throw err
+      message.channel.send('> "' + result[random].author + '"\n' + '> ' + result[random].quote);
+      //message.channel.send("> -"+result[random].person)
+    });
+    connection.release();
+  });
+  
+  
+  
+  
   else {
     levelCount -= 1;
   }
@@ -263,6 +277,35 @@ function poll(message, fullCommand) {
   })
   message.delete()
 }
+function seeCon(message, callback) {
+  pool.getConnection(function(err, connection) {
+    var sql = "SELECT EXISTS( SELECT * FROM currency WHERE username = " + message.member.id + ")";
+    connection.query(sql, function (err, result, fields) {
+      if (err) throw err
+      message.channel.send('> "' + result[random].author + '"\n' + '> ' + result[random].quote);
+      //message.channel.send("> -"+result[random].person)
+    });
+    connection.release();
+  });
+  callback(message, result)
+}
+
+function addLevel(message, result) {
+  var isTrue = JSON.stringify(result);
+  client.channels.get("626186938080034844").send('works');
+  if (isTrue.substring(isTrue.length-3, isTrue.length-2) == '0') {
+    var sql = "INSERT INTO currency (username, dollars) VALUES (" + message.member.id + ", 0)";
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      client.channels.get("626186938080034844").send("1 record inserted");
+    });
+  };
+  else {
+    client.channels.get("626186938080034844").send("already gotchu...");
+  }
+
+}
+
 
 function sendMeme(message,fullCommand) {
   var random = (Math.floor(Math.random() * Math.floor(527))) + 1
