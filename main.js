@@ -110,7 +110,16 @@ client.on('message', (message) => {
         */
         var isTrue = JSON.stringify(result);
         client.channels.get("626186938080034844").send('works');
-        client.channels.get("626186938080034844").send(isTrue.substring(isTrue.length-4, isTrue.length-1));
+        if (isTrue.substring(isTrue.length-3, isTrue.length-2) == '0') {
+          var sql = "INSERT INTO currency (username, dollars) VALUES (" + message.member.id + ", 0)";
+          con.query(sql, function (err, result) {
+            if (err) throw err;
+            client.channels.get("626186938080034844").send("1 record inserted");
+          });
+        };
+        else {
+          client.channels.get("626186938080034844").send("already gotchu");
+        }
         client.channels.get("626186938080034844").send('works');
         return;
       }
@@ -118,7 +127,7 @@ client.on('message', (message) => {
     con.end();
   }
 
-  if (message.member.roles.some(role => role.name == 'Curse of Vanishing')) {
+  else if (message.member.roles.some(role => role.name == 'Curse of Vanishing')) {
     message.delete(1000)
   }
   else if (message.content.startsWith(".")) {
