@@ -98,11 +98,14 @@ client.on('message', (message) => {
           client.channels.get("626186938080034844").send(result);
         }
         else {
+          /*
           var sql = "INSERT INTO currency (username, dollars) VALUES (" + message.member.id + ", 0)";
           con.query(sql, function (err, result) {
             if (err) throw err;
             console.log("Recorded");
           });
+          */
+          client.channels.get("626186938080034844").send("nope");
         }
       });
     
