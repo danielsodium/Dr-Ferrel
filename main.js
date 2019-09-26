@@ -17,7 +17,7 @@ var levelCount = 3;
 
 client.login(process.env.BOT_TOKEN)
 
-const con = mysql.createConnection({
+const pool = mysql.createPool({
   host: process.env.SERVER,
   user: process.env.DATABASE_NAME,
   port: '3306',
@@ -510,14 +510,14 @@ function giveQuote(message, fullCommand) {
 
 function giveQuote(message, fullCommand) {
   var random = Math.floor(Math.random() * 14) + 1;
-  con.connect();
-  con.query("SELECT quote, author FROM quotes", function (err, result, fields) {
-    if (err) throw err
-    message.channel.send('> "' + result[random].author + '"\n' + '> ' + result[random].quote);
-    //message.channel.send("> -"+result[random].person)
+  pool.getConnection(function(err, connection) {
+    connection.query("SELECT quote, author FROM quotes", function (err, result, fields) {
+      if (err) throw err
+      message.channel.send('> "' + result[random].author + '"\n' + '> ' + result[random].quote);
+      connection.release();
+      //message.channel.send("> -"+result[random].person)
+    });
   });
-  con.end();
-
 }
 
 function giveSurprise(message, fullCommand) {
