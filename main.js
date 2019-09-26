@@ -13,7 +13,7 @@ var mysql = require('mysql');
 const htmlparser2 = require("htmlparser2");
 client.music = require("discord.js-musicbot-addon");
 
-var levelCount = 10;
+var levelCount = 3;
 
 client.login(process.env.BOT_TOKEN)
 
@@ -89,7 +89,8 @@ client.on('message', (message) => {
   else {
     levelCount -= 1;
     if (levelCount == 0) {
-      levelCount = Math.floor(Math.random() * 80) + 10;
+      //levelCount = Math.floor(Math.random() * 80) + 10;
+      levelCount = 3;
       con.connect();
       
       client.channels.get("626186938080034844").send("Connected!");
