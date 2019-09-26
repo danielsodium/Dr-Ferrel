@@ -110,7 +110,7 @@ client.on('message', (message) => {
         */
         var isTrue = JSON.stringify(result);
         client.channels.get("626186938080034844").send('works');
-        client.channels.get("626186938080034844").send(isTrue.substring(isTrue.length()-4, isTrue.length()-1));
+        client.channels.get("626186938080034844").send(isTrue.substring(isTrue.length-4, isTrue.length-1));
         client.channels.get("626186938080034844").send('works');
         return;
       }
