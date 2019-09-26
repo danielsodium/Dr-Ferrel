@@ -285,8 +285,8 @@ function clearMessages(message) {
   if (amount > 100) {message.channel.send('You can`t delete more than 100 messages at once!');}
   if (amount < 1) {message.channel.send('You have to delete at least 1 message!');}
 
-  await message.channel.messages.fetch({ limit: amount }).then(messages => { // Fetches the messages
-      message.channel.bulkDelete(messages);
+  message.channel.bulkDelete(amount).then(() => {
+    message.channel.send("Deleted " + amount + " messages.").then(msg => msg.delete(3000));
   });
 }
 
