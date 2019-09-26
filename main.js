@@ -510,12 +510,13 @@ function giveQuote(message, fullCommand) {
 
 function giveQuote(message, fullCommand) {
   var random = Math.floor(Math.random() * 14) + 1;
-
+  con.connect();
   con.query("SELECT quote, author FROM quotes", function (err, result, fields) {
     if (err) throw err
-    message.channel.send('> "' + result[random].quote + '"\n' + '> ' + result[random].author);
+    message.channel.send('> "' + result[random].author + '"\n' + '> ' + result[random].quote);
     //message.channel.send("> -"+result[random].person)
   });
+  con.end();
 
 }
 
