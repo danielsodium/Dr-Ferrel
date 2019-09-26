@@ -275,7 +275,7 @@ function poll(message, fullCommand) {
     sent.react("\u2611")
   })
   message.delete()
-}
+}/*
 function seeCon(message, callback) {
   var isTrue = "";
   pool.getConnection(function(err, connection) {
@@ -305,8 +305,7 @@ function addLevel(message, result) {
   }
 
 }
-
-
+*/
 function sendMeme(message,fullCommand) {
   var random = (Math.floor(Math.random() * Math.floor(527))) + 1
   var number = "";
