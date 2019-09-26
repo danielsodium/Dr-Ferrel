@@ -501,10 +501,22 @@ function getHelp(message, fullCommand) {
   }
 
 }
-
+/*
 function giveQuote(message, fullCommand) {
   var random = Math.floor(Math.random() * Math.floor(quotes.length))
   message.channel.send(' > "' + quotes[random] + '" \n > -' + author[random]) 
+}
+*/
+
+function giveQuote(message, fullCommand) {
+  var random = Math.floor(Math.random() * 14) + 1;
+
+  con.query("SELECT author, quote FROM quotes", function (err, result, fields) {
+    if (err) throw err
+    message.channel.send('> "' + result[random].quote + '"\n' + '> ' + result[random].author);
+    //message.channel.send("> -"+result[random].person)
+  });
+
 }
 
 function giveSurprise(message, fullCommand) {
