@@ -279,11 +279,11 @@ function clearMessages(message) {
   const args = message.content.split(' ').slice(1);
   const amount = args.join(' ');
 
-  if (!amount) return message.reply('Give me a number to delete you fool');
-  if (isNaN(amount)) return message.reply('Give me a number to delete you fool!');
+  if (!amount) {message.channel.send('Give me a number to delete you fool');}
+  if (isNaN(amount)) {message.channel.send('Give me a number to delete you fool!');}
 
-  if (amount > 100) return message.reply('You can`t delete more than 100 messages at once!');
-  if (amount < 1) return message.reply('You have to delete at least 1 message!');
+  if (amount > 100) {message.channel.send('You can`t delete more than 100 messages at once!');}
+  if (amount < 1) {message.channel.send('You have to delete at least 1 message!');}
 
   await message.channel.messages.fetch({ limit: amount }).then(messages => { // Fetches the messages
       message.channel.bulkDelete(messages);
