@@ -41,7 +41,7 @@ var changes = "- Added music to the bot (gets music from Youtube) \n- Updated he
 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
-  client.channels.get("626186938080034844").send("Started");
+  client.channels.get("626186938080034844").send("Up and runnin'.");
 
   /*
   client.channels.get("622506890936713249").send({embed: {
@@ -273,11 +273,15 @@ function getVersion(message, fullCommand) {
 }
 
 function soundEffect() {
-  var voiceChannel = message.member.voiceChannel;
-  voiceChannel.join().then(connection =>{}).catch(err => console.log(err));
-  const dispatcher = connection.playFile('https://res.cloudinary.com/drferrel/video/upload/v1569529168/misc/shutup');
-  dispatcher.on("end", end => {});
-  voiceChannel.leave();
+    var VC = message.member.voiceChannel;
+        if (!VC)
+            return message.reply("MESSAGE IF NOT IN A VOICE CHANNEL")
+    VC.join()
+        .then(connection => {
+            const dispatcher = connection.playFile('https://res.cloudinary.com/drferrel/video/upload/v1569529168/misc/shutup');
+            dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
 
 }
 
