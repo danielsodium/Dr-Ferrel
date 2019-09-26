@@ -230,8 +230,11 @@ function processCommand(message) {
   if (primaryCommand == "role") {
     giveRole(message,splitCommand)
   }
-  if (primaryCommand == "shutup") {
-    soundEffect();
+  if (primaryCommand == "clear" && message.member.roles.some(role => role.name == 'Khan')) {
+    clearMessages(message);
+  }
+  else if (primaryCommand == "clear" && !(message.member.roles.some(role => role.name == 'Khan'))) {
+    message.channel.send("know your place you piece of trash");
   }
   if (primaryCommand == "connect") {
 
@@ -272,17 +275,19 @@ function getVersion(message, fullCommand) {
  });
 }
 
-function soundEffect() {
-    var VC = message.member.voiceChannel;
-        if (!VC)
-            return message.reply("MESSAGE IF NOT IN A VOICE CHANNEL")
-    VC.join()
-        .then(connection => {
-            const dispatcher = connection.playFile('https://res.cloudinary.com/drferrel/video/upload/v1569529168/misc/shutup');
-            dispatcher.on("end", end => {VC.leave()});
-        })
-        .catch(console.error);
+function clearMessages(message) {
+  const args = message.content.split(' ').slice(1);
+  const amount = args.join(' ');
 
+  if (!amount) return msg.reply('Give me a number to delete you fool');
+  if (isNaN(amount)) return msg.reply('Give me a number to delete you fool!');
+
+  if (amount > 100) return msg.reply('You can`t delete more than 100 messages at once!');
+  if (amount < 1) return msg.reply('You have to delete at least 1 message!');
+
+  await msg.channel.messages.fetch({ limit: amount }).then(messages => { // Fetches the messages
+      msg.channel.bulkDelete(messages // Bulk deletes all messages that have been fetched and are not older than 14 days (due to the Discord API)
+  )});
 }
 
 function poll(message, fullCommand) {
