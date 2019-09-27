@@ -230,10 +230,10 @@ function processCommand(message) {
   if (primaryCommand == "role") {
     giveRole(message,splitCommand)
   }
-  if (primaryCommand == "clear" && message.member.roles.some(role => role.name == 'Khan')) {
+  if (primaryCommand == "delete" && message.member.roles.some(role => role.name == 'Khan')) {
     clearMessages(message);
   }
-  else if (primaryCommand == "clear" && !(message.member.roles.some(role => role.name == 'Khan'))) {
+  else if (primaryCommand == "delete" && !(message.member.roles.some(role => role.name == 'Khan'))) {
     message.channel.send("know your place you piece of trash");
   }
   if (primaryCommand == "connect") {
