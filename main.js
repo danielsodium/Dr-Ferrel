@@ -12,7 +12,7 @@ var request = require('request');
 var mysql = require('mysql');
 const htmlparser2 = require("htmlparser2");
 client.music = require("discord.js-musicbot-addon");
-require('dotenv').config()
+//require('dotenv').config()
 
 var levelCount = 3;
 
@@ -77,6 +77,9 @@ client.on("guildMemberRemove", (member) => {
 client.on('message', (message) => {
   if (message.author == client.user || message.author.bot) {
       return
+  }
+  else (message.content.includes("www.discord.gg/")) {
+    message.channel.send("")
   }
   else if (message.member.roles.some(role => role.name == 'Curse of Vanishing')) {
     message.delete(1000)
