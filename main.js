@@ -12,7 +12,7 @@ var request = require('request');
 var mysql = require('mysql');
 const htmlparser2 = require("htmlparser2");
 client.music = require("discord.js-musicbot-addon");
-//require('dotenv').config()
+require('dotenv').config()
 
 var levelCount = 3;
 
@@ -38,11 +38,11 @@ client.music.start(client, {
 
 var versionNumber = "1.2.5"
 var extraStuff = " mySQL"
-var changes = "- Added music to the bot (gets music from Youtube) \n- Updated help with music page \n- Added more quotes"
+var changes = "- Trying to do \n- Updated help with music page \n- Added more quotes"
 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
-  /*
+
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
     author: {
@@ -63,7 +63,6 @@ client.on('ready', () => {
     }
   }
 });
-*/
 })
 
 client.on("guildMemberAdd", (member) => {
@@ -78,7 +77,7 @@ client.on('message', (message) => {
   if (message.author == client.user || message.author.bot) {
       return
   }
-  else (message.content.includes("www.discord.gg/")) {
+  else if (message.content.includes("www.discord.gg/")) {
     message.channel.send("")
   }
   else if (message.member.roles.some(role => role.name == 'Curse of Vanishing')) {
