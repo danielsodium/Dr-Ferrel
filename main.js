@@ -12,7 +12,7 @@ var request = require('request');
 var mysql = require('mysql');
 const htmlparser2 = require("htmlparser2");
 client.music = require("discord.js-musicbot-addon");
-require('dotenv').config()
+//require('dotenv').config()
 
 var levelCount = 3;
 
@@ -42,7 +42,7 @@ var changes = "- Trying to do \n- Updated help with music page \n- Added more qu
 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
-
+/*
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
     author: {
@@ -63,6 +63,7 @@ client.on('ready', () => {
     }
   }
 });
+*/
 })
 
 client.on("guildMemberAdd", (member) => {
