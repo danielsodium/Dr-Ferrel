@@ -18,6 +18,7 @@
     "node-opus": "0.3.2",
     "opusscript": "0.0.7",
     "twitter": "^1.7.1",
+    "request": "^2.88.0",
     "ytdl-core": "^0.29.6"
   },
   "devDependencies": {},
