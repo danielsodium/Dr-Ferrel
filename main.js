@@ -12,6 +12,7 @@ var request = require('request');
 var mysql = require('mysql');
 const htmlparser2 = require("htmlparser2");
 client.music = require("discord.js-musicbot-addon");
+require('dotenv').config()
 
 var levelCount = 3;
 
@@ -41,8 +42,6 @@ var changes = "- Added music to the bot (gets music from Youtube) \n- Updated he
 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
-  client.channels.get("626186938080034844").send("Up and runnin'.");
-
   /*
   client.channels.get("622506890936713249").send({embed: {
     color: 58967,
@@ -79,64 +78,6 @@ client.on('message', (message) => {
   if (message.author == client.user || message.author.bot) {
       return
   }
-  /*
-  
-  
-  pool.getConnection(function(err, connection) {
-    connection.query("SELECT quote, author FROM quotes", function (err, result, fields) {
-      if (err) throw err
-      message.channel.send('> "' + result[random].author + '"\n' + '> ' + result[random].quote);
-      //message.channel.send("> -"+result[random].person)
-    });
-    connection.release();
-  });
-  
-  
-  
-  
-  else {
-    levelCount -= 1;
-  }
-  if (levelCount == 0) {
-    //levelCount = Math.floor(Math.random() * 80) + 10;
-    levelCount = 3;
-    con.connect();
-
-    client.channels.get("626186938080034844").send("Connected!");
-    var check = "SELECT EXISTS( SELECT * FROM currency WHERE username = " + message.member.id + ")";
-    con.query(check, function (err, result) {
-      if (err) {
-        client.channels.get("626186938080034844").send("nope");
-        return;
-
-      }
-      else {
-        /*
-        var sql = "INSERT INTO currency (username, dollars) VALUES (" + message.member.id + ", 0)";
-        con.query(sql, function (err, result) {
-          if (err) throw err;
-          console.log("Recorded");
-        });
-        
-        var isTrue = JSON.stringify(result);
-        client.channels.get("626186938080034844").send('works');
-        if (isTrue.substring(isTrue.length-3, isTrue.length-2) == '0') {
-          var sql = "INSERT INTO currency (username, dollars) VALUES (" + message.member.id + ", 0)";
-          con.query(sql, function (err, result) {
-            if (err) throw err;
-            client.channels.get("626186938080034844").send("1 record inserted");
-          });
-        };
-        else {
-          client.channels.get("626186938080034844").send("already gotchu");
-        }
-        client.channels.get("626186938080034844").send('works');
-        return;
-      }
-    });
-    con.end();
-  }
-  */
   else if (message.member.roles.some(role => role.name == 'Curse of Vanishing')) {
     message.delete(1000)
   }
@@ -145,7 +86,7 @@ client.on('message', (message) => {
   }
   else if (!(message.content.includes("@")) && (message.content.includes("100") || message.content.includes("105"))) {
     message.channel.send({
-      file: "https://res.cloudinary.com/drferrel/image/upload/v1568690101/misc/winner.png" 
+      file: "https://res.cloudinary.com/drferrel/image/upload/v1568690101/misc/winner.png"
     });
   }
   else if (message.content.includes("offended") || message.content.includes("offensive")  ) {
@@ -230,10 +171,10 @@ function processCommand(message) {
   if (primaryCommand == "role") {
     giveRole(message,splitCommand)
   }
-  if (primaryCommand == "clear" && message.member.roles.some(role => role.name == 'Khan')) {
+  if (primaryCommand == "delete" && message.member.roles.some(role => role.name == 'Khan')) {
     clearMessages(message);
   }
-  else if (primaryCommand == "clear" && !(message.member.roles.some(role => role.name == 'Khan'))) {
+  else if (primaryCommand == "delete" && !(message.member.roles.some(role => role.name == 'Khan'))) {
     message.channel.send("know your place you piece of trash");
   }
   if (primaryCommand == "connect") {
@@ -247,8 +188,8 @@ function processCommand(message) {
       client.channels.get("626186938080034844").send("Table created");
     });
     */
-    
-    
+
+
   }
 }
 
@@ -312,7 +253,7 @@ function seeCon(message, callback) {
 }
 
 function addLevel(message, result) {
-  
+
   client.channels.get("626186938080034844").send('works');
   if (isTrue.substring(isTrue.length-3, isTrue.length-2) == '0') {
     var sql = "INSERT INTO currency (username, dollars) VALUES (" + message.member.id + ", 0)";
@@ -341,7 +282,7 @@ function sendMeme(message,fullCommand) {
   }
   var imageName = "https://res.cloudinary.com/drferrel/image/upload/v1568689715/memes/meme" + random + ".jpg"
   message.channel.send({
-      file: imageName 
+      file: imageName
   });
 }
 
@@ -349,7 +290,7 @@ function sendAnimeme(message, fullCommand) {
   var random = (Math.floor(Math.random() * Math.floor(276))) + 1
   var imageName = "https://res.cloudinary.com/drferrel/image/upload/v1568690101/animemes/meme" + random + ".jpg"
   message.channel.send({
-      file: imageName 
+      file: imageName
   });
 }
 /*
@@ -357,7 +298,7 @@ function sendCute(message, fullCommand) {
   var random = (Math.floor(Math.random() * Math.floor(80))) + 1
   var imageName = "https://raw.githubusercontent.com/sodiumkid/old/master/images/aww/aww" + random + ".mp4"
   message.channel.send({
-      file: imageName 
+      file: imageName
   });
 }
 */
@@ -371,7 +312,7 @@ function giveRole(message, splitCommand) {
   if (message.member.roles.has(role.id)) {
     message.channel.send("Took away the role " + role.name)
     member.removeRole(role).catch(console.error);
-  } 
+  }
   else {
     message.channel.send("Gave you the role " + role.name)
     member.addRole(role).catch(console.error);
