@@ -12,7 +12,7 @@ var request = require('request');
 var mysql = require('mysql');
 const htmlparser2 = require("htmlparser2");
 client.music = require("discord.js-musicbot-addon");
-//require('dotenv').config()
+require('dotenv').config()
 
 var levelCount = 3;
 
