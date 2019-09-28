@@ -41,6 +41,26 @@ client.music.start(client, {
 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
+  client.channels.get(process.env.PATCHES_CHANNEL).send({embed: {
+    color: 58967,
+    author: {
+      name: client.user.username,
+      icon_url: client.user.avatarURL
+    },
+    title: "Update " + versionNumber,
+    url: "https://github.com/sodiumkid/Dr-Ferrel",
+    fields: [{
+        name: "Changes:",
+        value: changes
+      }
+    ],
+    timestamp: new Date(),
+    footer: {
+      icon_url: client.user.avatarURL,
+      text: "© Creative Commons License"
+    }
+  }
+ });
 })
 
 client.on("guildMemberAdd", (member) => {
