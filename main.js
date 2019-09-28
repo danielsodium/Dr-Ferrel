@@ -16,9 +16,8 @@ const htmlparser2 = require("htmlparser2");
 client.music = require("discord.js-musicbot-addon");
 require('dotenv').config()
 
-var versionNumber = "1.2.5"
-var extraStuff = " mySQL"
-var changes = "- Trying to do \n- Updated help with music page \n- Added more quotes"
+var versionNumber = "1.2.8"
+var changes = "- Added quotes to mySQL server \n- Cleaned the code up to multiple files \n- No one reads these lol"
 
 client.login(process.env.BOT_TOKEN)
 
@@ -53,5 +52,5 @@ client.on("guildMemberRemove", (member) => {
 });
 
 client.on('message', (message) => {
-  processing.specialChar(message,functions, client);
+  processing.specialChar(message,functions,client, versionNumber, changes);
 })

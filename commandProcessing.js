@@ -12,7 +12,7 @@ exports.memberLeft = function(client, member) {
   client.channels.get("619388377577422848").send("oh " + member.toString() + " left... well its better off without them....");
 }
 
-exports.specialChar = function(message,functions, client) {
+exports.specialChar = function(message,functions, client, versionNumber, changes) {
   if (message.author == client.user || message.author.bot) {
       return
   }
@@ -23,7 +23,7 @@ exports.specialChar = function(message,functions, client) {
     message.delete(1000)
   }
   else if (message.content.startsWith(".")) {
-    processCommand(message, functions);
+    processCommand(message, functions,client, versionNumber, changes);
   }
   else if (!(message.content.includes("@")) && (message.content.includes("100") || message.content.includes("105"))) {
     message.channel.send({
@@ -41,7 +41,7 @@ exports.specialChar = function(message,functions, client) {
   }
 }
 
-processCommand = function(message, functions) {
+processCommand = function(message, functions,client, versionNumber, changes) {
   let fullCommand = message.content.substr(1)
   let splitCommand = fullCommand.split(" ")
   let primaryCommand = splitCommand[0]
@@ -101,7 +101,7 @@ processCommand = function(message, functions) {
   }
   */
   if (primaryCommand == "version") {
-    functions.getVersion(message,fullCommand)
+    functions.getVersion(message,fullCommand,client, versionNumber, changes)
   }
   if (primaryCommand == "surprise") {
     functions.giveSurprise(message,fullCommand)

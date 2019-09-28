@@ -94,6 +94,29 @@ exports.giveQuote = function(message, fullCommand) {
    connection.release();
  });
 }
+exports.getVersion = function(message, fullCommand, client, versionNumber, changes) {
+
+  message.channel.send({embed: {
+    color: 58967,
+    author: {
+      name: client.user.username,
+      icon_url: client.user.avatarURL
+    },
+    title: "Update " + versionNumber,
+    url: "https://github.com/sodiumkid/Dr-Ferrel",
+    fields: [{
+        name: "Changes:",
+        value: changes
+      }
+    ],
+    timestamp: new Date(),
+    footer: {
+      icon_url: client.user.avatarURL,
+      text: "© Creative Commons License"
+    }
+  }
+ });
+}
 
 exports.giveSurprise = function(message, fullCommand) {
   var random = Math.floor(Math.random() * Math.floor(8))
