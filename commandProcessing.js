@@ -118,6 +118,9 @@ processCommand = function(message, functions,client, versionNumber, changes) {
   else if (primaryCommand == "delete" && !(message.member.roles.some(role => role.name == 'Khan'))) {
     message.channel.send("know your place you piece of trash");
   }
+  if (primaryCommand == "mock") {
+    functions.mockingSpongebob(message);
+  }
   if (primaryCommand == "connect") {
 
 

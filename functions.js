@@ -204,6 +204,10 @@ exports.getHelp = function(message, fullCommand) {
         value: "Random history meme"
       },
       {
+        name: ".mock",
+        value: "Mock the last message in the channel"
+      },
+      {
         name: "8Z9YWEh",
         value: "huh idk what that means"
       },
@@ -320,6 +324,28 @@ exports.getHelp = function(message, fullCommand) {
     }
   });
   }
+
+}
+
+exports.mockingSpongebob = function(message) {
+  const genMeme = require('themememaker');
+  message.channel.fetchMessages({ limit: 2 }).then(messages => {
+  let lastMessage = messages.last();
+  let memeUrl = genMeme.make('spongebob', ' ', lastMessage.content)
+  memeUrl = memeUrl.substring(0, memeUrl.indexOf('//',10)) + memeUrl.substring(memeUrl.indexOf('//',10)+1, memeUrl.length);
+  memeUrl = memeUrl.substring(0, memeUrl.indexOf('..',10)) + memeUrl.substring(memeUrl.indexOf('..',10)+1, memeUrl.length);
+  console.log(memeUrl)
+  if (!lastMessage.author.bot) {
+    message.channel.send('<@' + lastMessage.author.id + '>')
+    message.channel.send({
+      file: memeUrl
+    });
+  }
+  else {
+    message.channel.send('DONT MOCK ME')
+  }
+
+})
 
 }
 

@@ -13,11 +13,12 @@ var mysql = require('mysql');
 var processing = require('./commandProcessing.js');
 var functions = require('./functions.js');
 const htmlparser2 = require("htmlparser2");
+
 client.music = require("discord.js-musicbot-addon");
 require('dotenv').config()
 
-var versionNumber = "1.2.8"
-var changes = "- Added quotes to mySQL server \n- Cleaned the code up to multiple files \n- No one reads these lol"
+var versionNumber = "1.2.9"
+var changes = "- Added quotes to mySQL server \n- Cleaned the code up to multiple files \n- Added .mock (significant lag)"
 
 client.login(process.env.BOT_TOKEN)
 
