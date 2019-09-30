@@ -26,8 +26,8 @@ const pool = mysql.createPool({
   database: process.env.DATABASE_NAME
 });
 
-var versionNumber = "1.2.9"
-var changes = "- Added quotes to mySQL server \n- Cleaned the code up to multiple files \n- Added .mock (significant lag)"
+var versionNumber = "1.3.0"
+var changes = "- Added quotes to mySQL server \n- Cleaned the code up to multiple files \n- Added .mock (significant lag) \n- Readded .classroom"
 
 var functions = require('./functions.js');
 

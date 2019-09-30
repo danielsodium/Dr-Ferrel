@@ -178,6 +178,10 @@ exports.getHelp = function(message, fullCommand) {
       {
         name: ".email",
         value: "Mr. Ferrel's email address"
+      },
+      {
+        name: ".classroom",
+        value: "Latest WHAP Google Classroom Announcement"
       }
     ],
     }
