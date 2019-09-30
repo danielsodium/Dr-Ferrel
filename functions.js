@@ -3,8 +3,6 @@
 * Comes from main.js -> commandProcessing.js -> functions.js
 */
 
-var allrequires = require('./allrequires.js')
-
 exports.clearMessages = function(message) {
  const args = message.content.split(' ').slice(1);
  const amount = args.join(' ');

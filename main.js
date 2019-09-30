@@ -16,8 +16,6 @@ require('dotenv').config()
 var versionNumber = "1.2.9"
 var changes = "- Added quotes to mySQL server \n- Cleaned the code up to multiple files \n- Added .mock (significant lag)"
 
-var allrequires = require('./allrequires.js')
-
 var functions = require('./functions.js');
 var processing = require('./commandProcessing.js');
 
