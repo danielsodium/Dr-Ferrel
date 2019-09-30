@@ -203,11 +203,9 @@ processCommand = function(message, client) {
 }
 
 function getClassroom(message, fullCommand) {
-  fs.readFile('google-credentials.json', (err, content) => {
-    if (err) return console.log('Error loading client secret file:', err);
-    // Authorize a client with credentials, then call the Google Classroom API.
-    authorize(JSON.parse(content), getNew, message);
-  });
+
+    authorize(JSON.parse(process.env.CREDS), getNew, message);
+
 }
 
 function authorize(credentials, callback, message) {
