@@ -8,11 +8,7 @@
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var request = require('request');
 var mysql = require('mysql');
-var processing = require('./commandProcessing.js');
-var functions = require('./functions.js');
-const htmlparser2 = require("htmlparser2");
 
 client.music = require("discord.js-musicbot-addon");
 require('dotenv').config()
@@ -20,15 +16,15 @@ require('dotenv').config()
 var versionNumber = "1.2.9"
 var changes = "- Added quotes to mySQL server \n- Cleaned the code up to multiple files \n- Added .mock (significant lag)"
 
+var allrequires = require('./allrequires.js')
+
+var functions = require('./functions.js');
+var processing = require('./commandProcessing.js');
+
+
 client.login(process.env.BOT_TOKEN)
 
-const pool = mysql.createPool({
-  host: process.env.SERVER,
-  user: process.env.DATABASE_NAME,
-  port: '3306',
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE_NAME
-});
+
 
 client.music.start(client, {
   youtubeKey: process.env.YOUTUBE_KEY,
@@ -73,5 +69,5 @@ client.on("guildMemberRemove", (member) => {
 });
 
 client.on('message', (message) => {
-  processing.specialChar(message,functions,client, versionNumber, changes);
+  processing.specialChar(message, functions, client,versionNumber, changes);
 })

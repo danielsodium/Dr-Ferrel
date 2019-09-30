@@ -2,7 +2,7 @@
 * For processing events that happen
 * Goes to functions.js for actual reactions
 */
-
+var allrequires = require('./allrequires.js')
 
 exports.memberJoined = function(client, member) {
   client.channels.get(process.env.GENERAL_CHANNEL).send("Hey " + member.toString() + ", welcome... we just do random stuff ap world idk");

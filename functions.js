@@ -3,6 +3,8 @@
 * Comes from main.js -> commandProcessing.js -> functions.js
 */
 
+var allrequires = require('./allrequires.js')
+
 exports.clearMessages = function(message) {
  const args = message.content.split(' ').slice(1);
  const amount = args.join(' ');
@@ -84,7 +86,15 @@ exports.takeCurse = function(message, fullCommand) {
 }
 
 exports.giveQuote = function(message, fullCommand) {
+  var mysql = require('mysql');
  var random = Math.floor(Math.random() * 14) + 1;
+ const pool = mysql.createPool({
+   host: process.env.SERVER,
+   user: process.env.DATABASE_NAME,
+   port: '3306',
+   password: process.env.DATABASE_PASSWORD,
+   database: process.env.DATABASE_NAME
+ });
  pool.getConnection(function(err, connection) {
    connection.query("SELECT quote, author FROM quotes", function (err, result, fields) {
      if (err) throw err
@@ -328,7 +338,7 @@ exports.getHelp = function(message, fullCommand) {
 }
 
 exports.mockingSpongebob = function(message) {
-  const genMeme = require('themememaker');
+  var genMeme = require('themememaker');
   message.channel.fetchMessages({ limit: 2 }).then(messages => {
   let lastMessage = messages.last();
   let memeUrl = genMeme.make('spongebob', ' ', lastMessage.content)
@@ -351,6 +361,9 @@ exports.mockingSpongebob = function(message) {
 
 exports.getScore = function(message,fullCommand) {
   var th = "ab"
+  var htmlparser2 = require("htmlparser2");
+  var request = require('request');
+
   request('https://www.espn.com/nfl/team/schedule/_/name/sf', function (error, response, body) {
     const parser = new htmlparser2.Parser(
       {
