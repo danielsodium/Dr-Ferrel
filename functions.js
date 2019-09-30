@@ -83,16 +83,9 @@ exports.takeCurse = function(message, fullCommand) {
   member.removeRole(role).catch(console.error);
 }
 
-exports.giveQuote = function(message, fullCommand) {
-  var mysql = require('mysql');
+exports.giveQuote = function(message, fullCommand, mysql, pool) {
  var random = Math.floor(Math.random() * 14) + 1;
- const pool = mysql.createPool({
-   host: process.env.SERVER,
-   user: process.env.DATABASE_NAME,
-   port: '3306',
-   password: process.env.DATABASE_PASSWORD,
-   database: process.env.DATABASE_NAME
- });
+
  pool.getConnection(function(err, connection) {
    connection.query("SELECT quote, author FROM quotes", function (err, result, fields) {
      if (err) throw err
@@ -335,14 +328,13 @@ exports.getHelp = function(message, fullCommand) {
 
 }
 
-exports.mockingSpongebob = function(message) {
-  var genMeme = require('themememaker');
+exports.mockingSpongebob = function(message, genMeme) {
+
   message.channel.fetchMessages({ limit: 2 }).then(messages => {
   let lastMessage = messages.last();
   let memeUrl = genMeme.make('spongebob', ' ', lastMessage.content)
   memeUrl = memeUrl.substring(0, memeUrl.indexOf('//',10)) + memeUrl.substring(memeUrl.indexOf('//',10)+1, memeUrl.length);
   memeUrl = memeUrl.substring(0, memeUrl.indexOf('..',10)) + memeUrl.substring(memeUrl.indexOf('..',10)+1, memeUrl.length);
-  console.log(memeUrl)
   if (!lastMessage.author.bot) {
     message.channel.send('<@' + lastMessage.author.id + '>')
     message.channel.send({
@@ -357,10 +349,9 @@ exports.mockingSpongebob = function(message) {
 
 }
 
-exports.getScore = function(message,fullCommand) {
+exports.getScore = function(message,fullCommand, request, htmlparser2) {
   var th = "ab"
-  var htmlparser2 = require("htmlparser2");
-  var request = require('request');
+
 
   request('https://www.espn.com/nfl/team/schedule/_/name/sf', function (error, response, body) {
     const parser = new htmlparser2.Parser(

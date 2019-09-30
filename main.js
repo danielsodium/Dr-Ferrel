@@ -9,9 +9,22 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var mysql = require('mysql');
+var genMeme = require('themememaker');
+const fs = require('fs');
+var htmlparser2 = require("htmlparser2");
+var request = require('request');
+const {google} = require('googleapis');
 
 client.music = require("discord.js-musicbot-addon");
 require('dotenv').config()
+
+const pool = mysql.createPool({
+  host: process.env.SERVER,
+  user: process.env.DATABASE_NAME,
+  port: '3306',
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME
+});
 
 var versionNumber = "1.2.9"
 var changes = "- Added quotes to mySQL server \n- Cleaned the code up to multiple files \n- Added .mock (significant lag)"
@@ -129,13 +142,13 @@ processCommand = function(message, client) {
     functions.takeCurse(message,fullCommand)
   }
   if (primaryCommand == "forecast") {
-    functions.getScore(message,fullCommand)
+    functions.getScore(message,fullCommand, request, htmlparser2)
   }
   if (primaryCommand == "about") {
     message.channel.send("I am the robotic manifestation of the superior Mr. Ferrel, created in image of his living personality.")
   }
   if (primaryCommand == "quote") {
-    functions.giveQuote(message, fullCommand)
+    functions.giveQuote(message, fullCommand, mysql, pool)
   }
   if (primaryCommand == "weather") {
     message.channel.send("It's hot right now... I'm going to blast the AC to full power.")
@@ -171,10 +184,10 @@ processCommand = function(message, client) {
     message.channel.send("know your place you piece of trash");
   }
   if (primaryCommand == "mock") {
-    functions.mockingSpongebob(message);
+    functions.mockingSpongebob(message, genMeme);
   }
-  if (primaryCommand == "connect") {
-
+  if (primaryCommand == "classroom") {
+    getClassroom(message, fullCommand)
 
     //seeCon(message,addLevel);
     /*
@@ -187,4 +200,34 @@ processCommand = function(message, client) {
 
 
   }
+}
+
+function getClassroom(message, fullCommand) {
+  fs.readFile('google-credentials.json', (err, content) => {
+    if (err) return console.log('Error loading client secret file:', err);
+    // Authorize a client with credentials, then call the Google Classroom API.
+    authorize(JSON.parse(content), getNew, message);
+  });
+}
+
+function authorize(credentials, callback, message) {
+  const {client_secret, client_id, redirect_uris} = credentials.installed;
+  const oAuth2Client = new google.auth.OAuth2(
+      client_id, client_secret, redirect_uris[0]);
+
+  // Check if we have previously stored a token.
+
+  oAuth2Client.setCredentials(JSON.parse(process.env.TOKEN_CLASS));
+  callback(oAuth2Client, message);
+
+}
+
+function getNew(auth, message) {
+  const classroom = google.classroom({version: 'v1', auth});
+  classroom.courses.announcements.list({
+    courseId: 40588415250
+  }, (err, res) => {
+    if (err) return console.error('The API returned an error: ' + err);
+    message.channel.send('> "' + res.data.announcements[0].text + '"\n > Posted by Mr. Ferrel at ' + res.data.announcements[0].updateTime)
+  });
 }
