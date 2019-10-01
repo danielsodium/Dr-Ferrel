@@ -27,7 +27,7 @@ const pool = mysql.createPool({
 });
 
 var versionNumber = "1.3.0"
-var changes = "- Added quotes to mySQL server \n- Cleaned the code up to multiple files \n- Added .mock (significant lag) \n- Readded .classroom"
+var changes = "- Added quotes to mySQL server \n- Cleaned the code up to multiple files \n- Added .mock (significant lag) \n- Readded .classroom with link"
 
 var functions = require('./functions.js');
 
@@ -226,6 +226,6 @@ function getNew(auth, message) {
     courseId: 40588415250
   }, (err, res) => {
     if (err) return console.error('The API returned an error: ' + err);
-    message.channel.send('> "' + res.data.announcements[0].text + '"\n > Posted by Mr. Ferrel at ' + res.data.announcements[0].updateTime)
+    message.channel.send('> "' + res.data.announcements[0].text + '"\n > Posted by Mr. Ferrel at ' + res.data.announcements[0].updateTime + ' \n' + res.data.announcements[0].alternateLink)
   });
 }
