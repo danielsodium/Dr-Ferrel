@@ -72,6 +72,8 @@ client.on('ready', () => {
 
 client.on("guildMemberAdd", (member) => {
   client.channels.get(process.env.GENERAL_CHANNEL).send("Hey " + member.toString() + ", welcome... we just do random stuff ap world idk");
+  let role = message.guild.roles.find(r => r.name === "Mongol");
+  member.addRole(role).catch(console.error);
 });
 
 client.on("guildMemberRemove", (member) => {

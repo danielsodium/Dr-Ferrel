@@ -53,8 +53,12 @@ exports.sendAnimeme = function(message, fullCommand) {
 }
 
 exports.giveRole = function(message, splitCommand) {
- if (splitCommand[1] == "gamer" || splitCommand[1] == "Gamer" || splitCommand[1] == "gamers") {
-   var role = message.guild.roles.find(r => r.name === "gamer");
+  var role;
+ if (splitCommand[1].toLowerCase().indexOf('gamer') != -1) {
+   role = message.guild.roles.find(r => r.name === "gamer");
+ }
+ else if (splitCommand[1].toLowerCase().indexOf('comp') != -1) {
+   role = message.guild.roles.find(r => r.name === "AP Comp Sci");
  }
 
  let member = message.member;
