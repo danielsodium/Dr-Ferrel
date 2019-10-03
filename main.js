@@ -26,8 +26,8 @@ const pool = mysql.createPool({
   database: process.env.DATABASE_NAME
 });
 
-var versionNumber = "1.3.0"
-var changes = "- Added quotes to mySQL server \n- Cleaned the code up to multiple files \n- Added .mock (significant lag) \n- Readded .classroom with link"
+var versionNumber = "1.3.2"
+var changes = "- Added Profanity Check \n- Added test answer pdf"
 
 var functions = require('./functions.js');
 
@@ -81,6 +81,7 @@ client.on("guildMemberRemove", (member) => {
 });
 
 client.on('message', (message) => {
+  checkProfanity(message);
   specialChar(message, client);
 })
 
@@ -111,6 +112,16 @@ specialChar = function(message, client) {
   else if (message.content.includes("sarwesh")) {
     message.channel.send('> "But the Mongols were barbarianisming them" \n > -Sarwesh, 2019')
   }
+}
+
+checkProfanity = function(message) {
+  for (var i = 0; i < JSON.parse(process.env.PROFANITY).length; i++) {
+    if (message.content.indexOf(JSON.parse(process.env.PROFANITY)[i]+"") != -1) {
+      message.channel.send("Hey, watch your language.");
+      message.delete(100);
+    }
+  }
+
 }
 
 processCommand = function(message, client) {
@@ -157,6 +168,9 @@ processCommand = function(message, client) {
   }
   if (primaryCommand == "thanks") {
     message.reply("You're welcome :)")
+  }
+  if (primaryCommand == "testanswers") {
+    message.reply("http://bit.ly/HistoryOfTheEarthAndItsPeoplesTeachersCopy")
   }
   if (primaryCommand == "admin") {
     message.channel.send(" > Become admin: \n > https://docs.google.com/forms/d/e/1FAIpQLSc-aPedL4XaunQeqhQiSnej1FKmwvOKhC6tdyNaiUp5CfZ_qQ/viewform?usp=sf_link")

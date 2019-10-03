@@ -186,6 +186,10 @@ exports.getHelp = function(message, fullCommand) {
       {
         name: ".classroom",
         value: "Latest WHAP Google Classroom Announcement"
+      },
+      {
+        name: ".testanswers",
+        value: "Answers for the first 10 Textbook tests"
       }
     ],
     }
