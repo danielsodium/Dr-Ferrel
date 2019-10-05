@@ -48,6 +48,7 @@ client.music.start(client, {
 
 client.on('ready', () => {
   client.user.setActivity("students fail | .help", {type: "WATCHING"})
+  /*
   client.channels.get(process.env.PATCHES_CHANNEL).send({embed: {
     color: 58967,
     author: {
@@ -68,6 +69,8 @@ client.on('ready', () => {
     }
   }
  });
+ */
+ client.channels.get(process.env.PATCHES_CHANNEL).send("> I restarted, sorry about that...");
 })
 
 client.on("guildMemberAdd", (member) => {
@@ -81,16 +84,18 @@ client.on("guildMemberRemove", (member) => {
 });
 
 client.on('message', (message) => {
+  if (message.author == client.user || message.author.bot) {
+      return
+  }
   checkProfanity(message);
   specialChar(message, client);
 })
 
 specialChar = function(message, client) {
-  if (message.author == client.user || message.author.bot) {
-      return
-  }
-  else if (message.content.includes("www.discord.gg/")) {
-    message.channel.send("")
+
+  if (message.content.includes("www.discord.gg/")) {
+    message.channel.send("no links my dudes")
+    message.delete();
   }
   else if (message.member.roles.some(role => role.name == 'Curse of Vanishing')) {
     message.delete(1000)
@@ -170,7 +175,7 @@ processCommand = function(message, client) {
     message.reply("You're welcome :)")
   }
   if (primaryCommand == "testanswers") {
-    message.reply("http://bit.ly/HistoryOfTheEarthAndItsPeoplesTeachersCopy")
+    message.reply("<http://bit.ly/HistoryOfTheEarthAndItsPeoplesTeachersCopy>")
   }
   if (primaryCommand == "admin") {
     message.channel.send(" > Become admin: \n > https://docs.google.com/forms/d/e/1FAIpQLSc-aPedL4XaunQeqhQiSnej1FKmwvOKhC6tdyNaiUp5CfZ_qQ/viewform?usp=sf_link")
@@ -201,6 +206,12 @@ processCommand = function(message, client) {
   }
   if (primaryCommand == "mock") {
     functions.mockingSpongebob(message, genMeme);
+  }
+  if (primaryCommand == "textbook") {
+    message.channel.send("https://www.longbranch.k12.nj.us/cms/lib/NJ01001766/Centricity/Domain/635/AP%20World%20History/The%20Earth%20and%20its%20Peoples%203rd%20Edition%20Online%20Textbook.pdf");
+  }
+  if (primaryCommand == "github") {
+    message.channel.send("https://www.github.com/sodiumkid/Dr-Ferrel");
   }
   if (primaryCommand == "classroom") {
     getClassroom(message, fullCommand)

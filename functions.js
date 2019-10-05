@@ -92,7 +92,7 @@ exports.giveQuote = function(message, fullCommand, mysql, pool) {
 
  pool.getConnection(function(err, connection) {
    connection.query("SELECT quote, author FROM quotes", function (err, result, fields) {
-     if (err) throw err
+     if (err) throw err;
      message.channel.send('> "' + result[random].author + '"\n' + '> ' + result[random].quote);
      //message.channel.send("> -"+result[random].person)
    });
@@ -186,6 +186,10 @@ exports.getHelp = function(message, fullCommand) {
       {
         name: ".classroom",
         value: "Latest WHAP Google Classroom Announcement"
+      },
+      {
+        name: ".textbook",
+        value: "Link to Textbook"
       },
       {
         name: ".testanswers",
@@ -297,11 +301,15 @@ exports.getHelp = function(message, fullCommand) {
       },
       {
         name: ".role [role name]",
-        value: "Gives/takes role (only one is gamer)"
+        value: "Gives/takes role (gamer or ap comp sci)"
       },
       {
         name: ".8Z9YWEh",
         value: "8Z9YWEh8Z9YWEh"
+      },
+      {
+        name: ".github",
+        value: "Link to Dr. Ferrel Source Code"
       },
       {
         name: ".version",
