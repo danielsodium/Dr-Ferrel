@@ -60,6 +60,9 @@ exports.giveRole = function(message, splitCommand) {
  else if (splitCommand[1].toLowerCase().indexOf('comp') != -1) {
    role = message.guild.roles.find(r => r.name === "AP Comp Sci");
  }
+ else if (splitCommand[1].toLowerCase().indexOf('juarez') != -1) {
+   role = message.guild.roles.find(r => r.name === "Juarez");
+ }
 
  let member = message.member;
  if (message.member.roles.has(role.id)) {
@@ -301,7 +304,7 @@ exports.getHelp = function(message, fullCommand) {
       },
       {
         name: ".role [role name]",
-        value: "Gives/takes role (gamer or ap comp sci)"
+        value: "Gives/takes role (gamer / ap comp sci / juarez)"
       },
       {
         name: ".8Z9YWEh",
