@@ -70,11 +70,6 @@ client.on('ready', () => {
   }
  });
  */
- var interval = setInterval (function () {
-      // use the message's channel (TextChannel) to send a new message
-      client.channels.get("632062730244980738").send("<@555978114916679680>");
-      .catch(console.error); // add error handling here
-  }, 1 * 100); 
   client.channels.get(process.env.PATCHES_CHANNEL).send("> I restarted, sorry about that...");
 })
 
