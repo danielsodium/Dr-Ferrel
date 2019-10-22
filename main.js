@@ -213,6 +213,10 @@ processCommand = function(message, client) {
   if (primaryCommand == "github") {
     message.channel.send("https://www.github.com/sodiumkid/Dr-Ferrel");
   }
+  if (primaryCommand == "money") {
+    message.channel.send("k");
+    giveMoney(message, fullCommand, mysql, pool);
+  }
   if (primaryCommand == "classroom") {
     getClassroom(message, fullCommand)
 
