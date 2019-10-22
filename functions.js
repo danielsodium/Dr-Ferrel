@@ -105,6 +105,33 @@ exports.giveQuote = function(message, fullCommand, mysql, pool) {
    connection.release();
  });
 }
+
+exports.giveMoney = function(message, fullCommand, mysql, pool) {
+ var allNames;
+ var profileExists = false;
+ var sqlQuery = "INSERT INTO currency (username, money) VALUES ("+message.author.name+", 1)"
+ pool.getConnection(function(err, connection) {
+   con.query("SELECT username FROM currency", function (err, result, fields) {
+    if (err) throw err;
+    allNames = result;
+   });
+   connection.release();
+ });
+ for (var i = 0; i < allNames.length; i++) {
+   if (message.author.id === allNames[i]) {
+    profileExists = true;
+   }
+ }
+ if (profileExists == false) {
+  pool.getConnection(function(err, connection) {
+   con.query(sqlQuery, function (err, result, fields) {
+    if (err) throw err;
+    message.channel.send("Created Account!");
+   });
+   connection.release();
+ });
+ }
+}
 exports.getVersion = function(message, fullCommand, client, versionNumber, changes) {
 
   message.channel.send({embed: {
