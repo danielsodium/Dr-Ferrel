@@ -75,6 +75,7 @@ client.on('ready', () => {
 
 client.on("guildMemberAdd", (member) => {
   client.channels.get(process.env.GENERAL_CHANNEL).send("Hey " + member.toString() + ", welcome... we just do random stuff ap world idk");
+  member.send(" > Hey, welcome to the AP World Server. I'm the custom bot made for the server, you can use me by typing .help in any channel in the server. If you want any roles, just do .role [role name]. Otherwise, feel free to hang out... we usually have voice chat study sessions at around 9:30 the night before a test/quiz.");
   let role = member.guild.roles.find(r => r.name === "Mongol");
   member.addRole(role).catch(console.error);
 });
