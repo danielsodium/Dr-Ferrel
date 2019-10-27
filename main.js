@@ -10,7 +10,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 var mysql = require('mysql');
 var genMeme = require('themememaker');
-var http = require('http');
 const fs = require('fs');
 var htmlparser2 = require("htmlparser2");
 var request = require('request');
@@ -32,11 +31,14 @@ var changes = "- Added Profanity Check \n- Added test answer pdf"
 
 var functions = require('./functions.js');
 
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World!');
-}).listen(process.env.PORT || 3000);
+var static = require('node-static');
+var file = new static.Server();
 
+require('http').createServer(function(request, response) {
+  request.addListener('end', function() {
+    file.serve(request, response);
+  }).resume();
+}).listen(process.env.PORT || 3000);
 
 client.login(process.env.BOT_TOKEN)
 
