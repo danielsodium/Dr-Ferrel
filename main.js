@@ -31,21 +31,6 @@ var changes = "- Added Profanity Check \n- Added test answer pdf"
 
 var functions = require('./functions.js');
 
-const http = require('http');
-const port = process.env.PORT || 3000
-
-const server = http.createServer((req, res) => {
-  fs.readFile('webpage.html', function(err, data) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
-    res.end();
-  });
-});
-
-server.listen(port,() => {
-  console.log(`Server running at port `+port);
-});
-
 client.login(process.env.BOT_TOKEN)
 
 client.music.start(client, {
