@@ -10,6 +10,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 var mysql = require('mysql');
 var genMeme = require('themememaker');
+var http = require('http');
 const fs = require('fs');
 var htmlparser2 = require("htmlparser2");
 var request = require('request');
@@ -30,6 +31,11 @@ var versionNumber = "1.3.2"
 var changes = "- Added Profanity Check \n- Added test answer pdf"
 
 var functions = require('./functions.js');
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World!');
+}).listen(process.env.PORT || 3000);
 
 
 client.login(process.env.BOT_TOKEN)
@@ -70,7 +76,7 @@ client.on('ready', () => {
   }
  });
  */
-  client.channels.get(process.env.PATCHES_CHANNEL).send("> I restarted, sorry about that...");
+  client.channels.get(process.env.PATCHES_CHANNEL).send("ERROR: Heroku server restart");
 })
 
 client.on("guildMemberAdd", (member) => {
