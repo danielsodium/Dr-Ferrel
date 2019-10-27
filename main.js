@@ -35,9 +35,11 @@ const http = require('http');
 const port = process.env.PORT || 3000
 
 const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
-  res.end('<h1>Hello World</h1>');
+  fs.readFile('webpage.html', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    res.end();
+  });
 });
 
 server.listen(port,() => {
@@ -45,8 +47,6 @@ server.listen(port,() => {
 });
 
 client.login(process.env.BOT_TOKEN)
-
-
 
 client.music.start(client, {
   youtubeKey: process.env.YOUTUBE_KEY,
