@@ -115,7 +115,7 @@ exports.getVersion = function(message, fullCommand, client, versionNumber, chang
       icon_url: client.user.avatarURL
     },
     title: "Update " + versionNumber,
-    url: "https://github.com/sodiumkid/Dr-Ferrel",
+    url: "https://www.danielna.tk/dr-ferrel.html",
     fields: [{
         name: "Changes:",
         value: changes
