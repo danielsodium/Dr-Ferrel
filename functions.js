@@ -38,7 +38,12 @@ exports.sendMeme = function(message,fullCommand) {
  else {
    number = random;
  }
- var imageName = "https://res.cloudinary.com/drferrel/image/upload/v1568689715/memes/meme" + random + ".jpg"
+ try {
+ 				var imageName = "https://res.cloudinary.com/drferrel/image/upload/v1568689715/memes/meme" + random + ".jpg";
+ 			}
+ catch(exception) {
+ 				sendMeme(message, fullCommand);
+ }
  message.channel.send({
      file: imageName
  });
