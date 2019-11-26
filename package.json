@@ -18,6 +18,7 @@
     "node-opus": "0.3.2",
     "node-static": "^0.7.11",
     "opusscript": "0.0.7",
+    "parse-time": "^0.1.4",
     "request": "^2.88.0",
     "themememaker": "0.0.3",
     "twitter": "^1.7.1",
