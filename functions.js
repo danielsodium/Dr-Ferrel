@@ -38,7 +38,12 @@ exports.sendMeme = function(message,fullCommand) {
  else {
    number = random;
  }
- var imageName = "https://res.cloudinary.com/drferrel/image/upload/v1568689715/memes/meme" + random + ".jpg"
+ try {
+ 				var imageName = "https://res.cloudinary.com/drferrel/image/upload/v1568689715/memes/meme" + random + ".jpg";
+ 			}
+ catch(exception) {
+ 				sendMeme(message, fullCommand);
+ }
  message.channel.send({
      file: imageName
  });
@@ -115,7 +120,7 @@ exports.getVersion = function(message, fullCommand, client, versionNumber, chang
       icon_url: client.user.avatarURL
     },
     title: "Update " + versionNumber,
-    url: "https://github.com/sodiumkid/Dr-Ferrel",
+    url: "https://www.danielna.tk/dr-ferrel.html",
     fields: [{
         name: "Changes:",
         value: changes

@@ -211,6 +211,9 @@ processCommand = function(message, client) {
   if (primaryCommand == "github") {
     message.channel.send("https://www.github.com/sodiumkid/Dr-Ferrel");
   }
+  if (primaryCommand == "unitguides") {
+    message.channel.send("Unit 3: https://docs.google.com/document/d/1wRMPtTJ8kfunEYYVdWEvhi4QjKaVgZK9aIU6Xlwo5CQ/edit?usp=sharing \nUnit 5: https://docs.google.com/document/d/1cHIc1JPFS7hLQGKgyuPCVfV1joGonbT12gA4bmslyOk/edit?usp=sharing");
+  }
   if (primaryCommand == "classroom") {
     getClassroom(message, fullCommand)
 
