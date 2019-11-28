@@ -3,7 +3,7 @@
   "version": "1.0.9",
   "main": "main.js",
   "engines": {
-    "node": "12.13.0"
+    "node": "6.4.1"
   },
   "scripts": {
     "start": "node main.js"
