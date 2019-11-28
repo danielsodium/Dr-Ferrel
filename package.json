@@ -25,7 +25,7 @@
     "opusscript": "0.0.6",
     "parse-time": "^0.1.4",
     "request": "^2.88.0",
-    "themememaker": "0.0.3",
+    "themememaker": "0.0.3"
   },
   "devDependencies": {},
   "description": ""
