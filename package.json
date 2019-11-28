@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "core-util-is": "^1.0.2",
     "discord.js": "^11.5.1",
     "discord.js-musicbot-addon": "^13.8.1",
     "dotenv": "^8.1.0",
@@ -23,6 +24,7 @@
     "opusscript": "0.0.6",
     "parse-time": "^0.1.4",
     "request": "^2.88.0",
+    "snekfetch": "^4.0.4",
     "themememaker": "0.0.3"
   },
   "devDependencies": {},

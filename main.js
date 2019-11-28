@@ -30,7 +30,6 @@ var versionNumber = "1.3.2"
 var changes = "- Added Profanity Check \n- Added test answer pdf"
 
 var functions = require('./functions.js');
-
 client.login(process.env.BOT_TOKEN)
 
 client.music.start(client, {
@@ -133,6 +132,9 @@ processCommand = function(message, client) {
   let primaryCommand = splitCommand[0]
   let arguments = splitCommand.slice(1)
 
+  if (primaryCommand == "dank") {
+    functions.run(client,message,Discord)
+  }
   if (primaryCommand == "poll") {
     functions.poll(message, fullCommand)
   }
