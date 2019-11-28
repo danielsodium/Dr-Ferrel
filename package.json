@@ -27,7 +27,6 @@
     "request": "^2.88.0",
     "themememaker": "0.0.3",
     "twitter": "^1.7.1",
-    "ytdl-core": "^0.29.6"
   },
   "devDependencies": {},
   "description": ""
