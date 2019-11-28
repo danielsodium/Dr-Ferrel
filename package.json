@@ -18,7 +18,7 @@
     "dotenv": "^8.1.0",
     "googleapis": "^39.2.0",
     "htmlparser2": "^4.0.0",
-    "m3u8stream": "^0.6.3",
+    "m3u8stream": "git+https://github.com/sodiumkid/node-m3u8stream.git",
     "mysql": "^2.17.1",
     "node-opus": "0.2.7",
     "node-static": "^0.7.11",
@@ -27,7 +27,6 @@
     "request": "^2.88.0",
     "themememaker": "0.0.3",
     "twitter": "^1.7.1",
-    "ytdl-core": "^0.29.6"
   },
   "devDependencies": {},
   "description": ""
