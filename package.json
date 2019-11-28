@@ -26,7 +26,6 @@
     "parse-time": "^0.1.4",
     "request": "^2.88.0",
     "themememaker": "0.0.3",
-    "twitter": "^1.7.1",
   },
   "devDependencies": {},
   "description": ""
