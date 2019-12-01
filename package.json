@@ -24,7 +24,7 @@
     "parse-time": "^0.1.4",
     "request": "^2.88.0",
     "snekfetch": "^4.0.4",
-    "themememaker": "0.0.3"
+    "themememaker": "0.0.3",
   },
   "devDependencies": {},
   "description": ""
