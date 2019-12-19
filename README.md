@@ -1,6 +1,6 @@
 # Dr. Ferrel
 
-Dr. Ferrel is a Discord bot made for a AP World Discord Server. 
+Dr. Ferrel is a Discord bot made for an AP World Discord Server. 
 
 ## Updates
 
