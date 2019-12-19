@@ -84,7 +84,7 @@ client.on('message', (message) => {
   if (message.author == client.user || message.author.bot) {
       return
   }
-  checkProfanity(message);
+  //checkProfanity(message);
   specialChar(message, client);
 })
 
