@@ -25,7 +25,7 @@ exports.poll = function(message, fullCommand) {
  })
  message.delete()
 }
-
+/*
 exports.sendMeme = function(message,fullCommand) {
  var random = (Math.floor(Math.random() * Math.floor(527))) + 1
  var number = "";
@@ -49,6 +49,8 @@ exports.sendMeme = function(message,fullCommand) {
  });
 }
 
+
+
 exports.sendAnimeme = function(message, fullCommand) {
  var random = (Math.floor(Math.random() * Math.floor(276))) + 1
  var imageName = "https://res.cloudinary.com/drferrel/image/upload/v1568690101/animemes/meme" + random + ".jpg"
@@ -56,23 +58,20 @@ exports.sendAnimeme = function(message, fullCommand) {
      file: imageName
  });
 }
+*/
 
-
-exports.run = async (client, message,Discord) => {
+exports.run = async (client, message, type , Discord) => {
   const snekfetch = require('snekfetch');
+  const url = 'https://www.reddit.com/r/' + type + '.json?sort=top&t=week';
     try {
         const { body } = await snekfetch
-            .get('https://www.reddit.com/r/dankmemes.json?sort=top&t=week')
+            .get(url)
             .query({ limit: 800 });
         const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
         if (!allowed.length) return message.channel.send('It seems we are out of fresh memes!, Try again later.');
         const randomnumber = Math.floor(Math.random() * allowed.length)
         const embed = new Discord.RichEmbed()
-        .setColor(0x00A2E8)
-        .setTitle(allowed[randomnumber].data.title)
-        .setDescription("Posted by: " + allowed[randomnumber].data.author)
         .setImage(allowed[randomnumber].data.url)
-        .addField("Other info:", "Up votes: " + allowed[randomnumber].data.ups + " / Comments: " + allowed[randomnumber].data.num_comments)
         .setFooter("Memes provided by reddit, the superior meme source")
         message.channel.send(embed)
     } catch (err) {

@@ -66,7 +66,7 @@ client.on('ready', () => {
   }
  });
  */
-  client.channels.get(process.env.PATCHES_CHANNEL).send("ERROR: Heroku server restart");
+  //client.channels.get(process.env.PATCHES_CHANNEL).send("ERROR: Heroku server restart");
 })
 
 client.on("guildMemberAdd", (member) => {
@@ -133,7 +133,7 @@ processCommand = function(message, client) {
   let arguments = splitCommand.slice(1)
 
   if (primaryCommand == "dank") {
-    functions.run(client,message,Discord)
+    functions.run(client,message, "dankmemes", Discord)
   }
   if (primaryCommand == "poll") {
     functions.poll(message, fullCommand)
@@ -181,10 +181,10 @@ processCommand = function(message, client) {
     message.channel.send(" > Become admin: \n > https://docs.google.com/forms/d/e/1FAIpQLSc-aPedL4XaunQeqhQiSnej1FKmwvOKhC6tdyNaiUp5CfZ_qQ/viewform?usp=sf_link")
   }
   if (primaryCommand == "meme") {
-    functions.sendMeme(message,fullCommand)
+    functions.run(client,message, "historymemes", Discord);
   }
   if (primaryCommand == "animeme") {
-    functions.sendAnimeme(message,fullCommand)
+    functions.run(client,message,"historyanimemes",Discord);
   }
   if (primaryCommand == "version") {
     functions.getVersion(message,fullCommand,client, versionNumber, changes)
